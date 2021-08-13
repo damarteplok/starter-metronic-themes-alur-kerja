@@ -5,9 +5,11 @@ import {ArticlesComponent} from './articles.component';
 import {InlineSVGModule} from 'ng-inline-svg';
 import {CRUDTableModule} from '../../_metronic/shared/crud-table';
 import {ReactiveFormsModule} from '@angular/forms';
+import {DeleteArticlesModalComponent} from './components/delete-articles-modal/delete-articles-modal.component';
 
 @NgModule({
-    declarations: [ArticlesComponent],
+    declarations: [ArticlesComponent, DeleteArticlesModalComponent],
+    entryComponents: [DeleteArticlesModalComponent],
     imports: [
         CommonModule,
         RouterModule.forChild([

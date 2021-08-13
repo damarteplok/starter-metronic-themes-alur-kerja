@@ -4,6 +4,8 @@ import {ArticlesService} from './articles.service';
 import {IFilterView, IPaginatorView, ISortView, PaginatorState, SortState} from '../../_metronic/shared/crud-table';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {BaseCrudPagesComponent} from '../shared/component/base-crud-pages.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {DeleteArticlesModalComponent} from './components/delete-articles-modal/delete-articles-modal.component';
 
 @Component({
   selector: 'app-articles',
@@ -14,9 +16,16 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
 
   constructor(
       public tableService: ArticlesService,
-      protected fb: FormBuilder
+      protected fb: FormBuilder,
+      private modalService: NgbModal,
   ) {
     super(tableService, fb);
+  }
+
+  delete(id: number) {  // +
+    const modalRef = this.modalService.open(DeleteArticlesModalComponent);
+    modalRef.componentInstance.id = id;
+    modalRef.result.then(() => this.tableService.fetch(), () => {});
   }
 
   filterForm() {
