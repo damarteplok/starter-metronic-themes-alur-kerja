@@ -13,9 +13,6 @@ build:
     expire_in: 1 day
     paths:
       - dist/
-  cache:
-    paths:
-      - node_modules/
   tags:
     - cloud
   only:
