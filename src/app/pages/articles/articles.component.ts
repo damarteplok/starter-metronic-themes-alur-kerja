@@ -28,10 +28,22 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
 
   filterForm() {
     this.filterGroup = this.fb.group({
-      title: ['']
+      title: [''],
+      content: [''],
+      category: [''],
     });
     this.subscriptions.push(
         this.filterGroup.controls.title.valueChanges.subscribe(() =>
+            this.filter()
+        )
+    );
+    this.subscriptions.push(
+        this.filterGroup.controls.content.valueChanges.subscribe(() =>
+            this.filter()
+        )
+    );
+    this.subscriptions.push(
+        this.filterGroup.controls.category.valueChanges.subscribe(() =>
             this.filter()
         )
     );
@@ -42,6 +54,14 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
     const title = this.filterGroup.get('title').value;
     if (title) {
       filter['title'] = title;
+    }
+    const content = this.filterGroup.get('content').value;
+    if (content) {
+      filter['content'] = content;
+    }
+    const category = this.filterGroup.get('category').value;
+    if (category) {
+      filter['category'] = category;
     }
     this.tableService.patchState({ filter });
   }

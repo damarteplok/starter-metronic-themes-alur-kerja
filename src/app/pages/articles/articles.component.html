@@ -7,15 +7,38 @@
     <div class="card-body">
         <div class="form form-label-right">
             <div class="form-group row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="row" [formGroup]="filterGroup">
-                        <div class="col-lg-6">
-                            <label>Title</label>
+                        <div class="col-lg-12">
                             <input type="text"
                                    class="form-control"
                                    name="searchText"
-                                   placeholder="Search"
+                                   placeholder="Search Title"
                                    formControlName="title"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="row" [formGroup]="filterGroup">
+                        <div class="col-lg-12">
+                            <input type="text"
+                                   class="form-control"
+                                   name="searchText"
+                                   placeholder="Search Content"
+                                   formControlName="content"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="row" [formGroup]="filterGroup">
+                        <div class="col-lg-12">
+                            <input type="text"
+                                   class="form-control"
+                                   name="searchText"
+                                   placeholder="Search Category"
+                                   formControlName="category"
                             />
                         </div>
                     </div>
