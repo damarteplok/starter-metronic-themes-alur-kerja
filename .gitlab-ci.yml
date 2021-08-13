@@ -1,0 +1,28 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image: trion/ng-cli
+  before_script:
+    - npm install
+  script:
+    - node --max_old_space_size=8192 --no-warnings 'node_modules/@angular/cli/bin/ng' build
+  artifacts:
+    paths:
+      - dist/
+  tags:
+    - cloud
+  only:
+    - master
+
+deploy_staging:
+  stage: deploy
+  tags:
+    - cloud
+  image: javanlabs/ssh-client:latest
+  only:
+    - master
+  script:
+    - rsync -rav --delete dist/ root@10.10.10.223:/var/www/html/
