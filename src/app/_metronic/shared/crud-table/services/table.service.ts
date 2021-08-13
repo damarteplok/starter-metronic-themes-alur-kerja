@@ -215,7 +215,7 @@ export abstract class TableService<T> {
           this._items$.next(itemsTemp);
           this.patchStateWithoutFetch({
             paginator: this._tableState$.value.paginator.recalculatePaginator(
-              itemsTemp.length
+              res.data.totalElements
             ),
           });
         }),
