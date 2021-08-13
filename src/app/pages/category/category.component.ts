@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IFilterView, ISortView, SortState} from '../../_metronic/shared/crud-table';
+import {IFilterView, IPaginatorView, ISortView, PaginatorState, SortState} from '../../_metronic/shared/crud-table';
 import {Subscription} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {CategoryService} from './category.service';
@@ -9,17 +9,22 @@ import {CategoryService} from './category.service';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit, OnDestroy, ISortView, IFilterView {
+export class CategoryComponent implements OnInit, OnDestroy, ISortView, IFilterView, IPaginatorView {
 
   isLoading: boolean;
   private subscriptions: Subscription[] = [];
   filterGroup: FormGroup;
   sorting: SortState;
+  paginator: PaginatorState;
 
   constructor(
       public tableService: CategoryService,
       private fb: FormBuilder
   ) { }
+
+  paginate(paginator: PaginatorState) {
+    this.tableService.patchState({ paginator });
+  }
 
   filterForm() {
     this.filterGroup = this.fb.group({
@@ -59,6 +64,7 @@ export class CategoryComponent implements OnInit, OnDestroy, ISortView, IFilterV
     const sb = this.tableService.isLoading$.subscribe(res => this.isLoading = res);
     this.subscriptions.push(sb);
     this.sorting = this.tableService.sorting;
+    this.paginator = this.tableService.paginator;
   }
 
   ngOnDestroy() {

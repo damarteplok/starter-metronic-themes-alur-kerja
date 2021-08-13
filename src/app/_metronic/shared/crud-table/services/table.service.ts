@@ -98,10 +98,11 @@ export abstract class TableService<T> {
   getAll(tableState: ITableState): Observable<any> {
     const url = this.API_URL;
     this._errorMessage.next('');
-    // console.log(JSON.stringify(tableState));
+    console.log(JSON.stringify(tableState));
+    const page = tableState.paginator.page - 1;
     let params = new HttpParams()
-        // .set('page', tableState.paginator.page.toString())
-        // .set('limit', tableState.paginator.pageSize.toString())
+        .set('page', page.toString())
+        .set('limit', tableState.paginator.pageSize.toString())
 
     params = params.set('sort', tableState.sorting.column);
     params = params.set('search', '1');
