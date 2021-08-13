@@ -10,8 +10,12 @@ build:
   script:
     - node --max_old_space_size=8192 --no-warnings 'node_modules/@angular/cli/bin/ng' build
   artifacts:
+    expire_in: 2 hours
     paths:
       - dist/
+  cache:
+    paths:
+      - node_modules/
   tags:
     - cloud
   only:
