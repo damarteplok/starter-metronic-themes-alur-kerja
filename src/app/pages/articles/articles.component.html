@@ -3,6 +3,9 @@
         <div class="card-title">
             <h3 class="card-label">Articles list</h3>
         </div>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-primary" (click)="create()">New Articles</button>
+        </div>
     </div>
     <div class="card-body">
         <div class="form form-label-right">
@@ -81,7 +84,8 @@
                     <td>{{ item.createdDate | date: 'dd-MMM-yyyy'}}</td>
                     <td>
                         <!-- edit -->
-                        <a title="Edit customer" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                        <a title="Edit customer" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                           (click)="edit(item.id)">
                             <span [inlineSVG]="'./assets/media/svg/icons/Communication/Write.svg'" cacheSVG="true"
                                   class="svg-icon svg-icon-md svg-icon-primary">
                             </span>

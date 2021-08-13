@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {BaseCrudPagesComponent} from '../shared/component/base-crud-pages.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DeleteArticlesModalComponent} from './components/delete-articles-modal/delete-articles-modal.component';
+import {EditArticlesModalComponent} from './components/edit-articles-modal/edit-articles-modal.component';
 
 @Component({
   selector: 'app-articles',
@@ -18,6 +19,19 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
       private modalService: NgbModal,
   ) {
     super(tableService, fb);
+  }
+
+  create() {
+    this.edit(undefined);
+  }
+
+  edit(id: number) {
+    const modalRef = this.modalService.open(EditArticlesModalComponent, { size: 'xl' });
+    modalRef.componentInstance.id = id;
+    modalRef.result.then(() =>
+            this.tableService.fetch(),
+        () => { }
+    );
   }
 
   delete(id: number) {

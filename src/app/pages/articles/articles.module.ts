@@ -6,10 +6,13 @@ import {InlineSVGModule} from 'ng-inline-svg';
 import {CRUDTableModule} from '../../_metronic/shared/crud-table';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DeleteArticlesModalComponent} from './components/delete-articles-modal/delete-articles-modal.component';
+import {NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CustomAdapter, CustomDateParserFormatter} from '../../_metronic/core';
+import {EditArticlesModalComponent} from './components/edit-articles-modal/edit-articles-modal.component';
 
 @NgModule({
-    declarations: [ArticlesComponent, DeleteArticlesModalComponent],
-    entryComponents: [DeleteArticlesModalComponent],
+    declarations: [ArticlesComponent, DeleteArticlesModalComponent, EditArticlesModalComponent],
+    entryComponents: [DeleteArticlesModalComponent, EditArticlesModalComponent],
     imports: [
         CommonModule,
         RouterModule.forChild([
@@ -21,6 +24,18 @@ import {DeleteArticlesModalComponent} from './components/delete-articles-modal/d
         InlineSVGModule,
         CRUDTableModule,
         ReactiveFormsModule,
+        NgbModule,
+        NgbDatepickerModule,
+    ],
+    providers: [
+        {
+            provide: NgbDateAdapter,
+            useClass: CustomAdapter
+        },
+        {
+            provide: NgbDateParserFormatter,
+            useClass: CustomDateParserFormatter
+        }
     ],
 })
 export class ArticlesModule {}

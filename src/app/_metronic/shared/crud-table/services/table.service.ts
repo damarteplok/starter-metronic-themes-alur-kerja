@@ -69,7 +69,7 @@ export abstract class TableService<T> {
 
   // CREATE
   // server should return the object with ID
-  create(item: BaseModel): Observable<BaseModel> {
+  create(item: any): Observable<BaseModel> {
     this._isLoading$.next(true);
     this._errorMessage.next('');
     return this.http.post<BaseModel>(this.API_URL, item).pipe(
@@ -98,7 +98,6 @@ export abstract class TableService<T> {
   getAll(tableState: ITableState): Observable<any> {
     const url = this.API_URL;
     this._errorMessage.next('');
-    console.log(JSON.stringify(tableState));
     const page = tableState.paginator.page - 1;
     let params = new HttpParams()
         .set('page', page.toString())
@@ -143,11 +142,11 @@ export abstract class TableService<T> {
   }
 
   // UPDATE
-  update(item: BaseModel): Observable<any> {
-    const url = `${this.API_URL}/${item.id}`;
+  update(id, item: any): Observable<any> {
+    const url = `${this.API_URL}/${id}`;
     this._isLoading$.next(true);
     this._errorMessage.next('');
-    return this.http.put(url, item).pipe(
+    return this.http.post(url, item).pipe(
       catchError(err => {
         this._errorMessage.next(err);
         console.error('UPDATE ITEM', item, err);

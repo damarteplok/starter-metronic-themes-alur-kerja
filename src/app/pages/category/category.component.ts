@@ -4,6 +4,7 @@ import {CategoryService} from './category.service';
 import {BaseCrudPagesComponent} from '../shared/component/base-crud-pages.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DeleteCategoryModalComponent} from './components/delete-category-modal.component';
+import {EditCategoryModalComponent} from './components/edit-category-modal/edit-category-modal.component';
 
 @Component({
   selector: 'app-category',
@@ -18,6 +19,19 @@ export class CategoryComponent extends BaseCrudPagesComponent {
       private modalService: NgbModal,
   ) {
     super(tableService, fb);
+  }
+
+  create() {
+    this.edit(undefined);
+  }
+
+  edit(id: number) {
+    const modalRef = this.modalService.open(EditCategoryModalComponent, { size: 'xl' });
+    modalRef.componentInstance.id = id;
+    modalRef.result.then(() =>
+            this.tableService.fetch(),
+        () => { }
+    );
   }
 
   delete(id: number) {

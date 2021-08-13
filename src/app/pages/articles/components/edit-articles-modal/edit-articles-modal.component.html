@@ -1,0 +1,115 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="modal-title h4" id="example-modal-sizes-title-lg">
+            <ng-container *ngIf="formObj">
+                <ng-container *ngIf="formObj.id">Edit</ng-container>
+                <ng-container *ngIf="!formObj.id">Create</ng-container>
+                Articles
+            </ng-container>
+        </div>
+    </div>
+    <div
+            class="overlay overlay-block cursor-default modal-body"
+            style="min-height: 404px"
+    >
+        <ng-container *ngIf="isLoading$ | async">
+            <div class="overlay-layer bg-transparent">
+                <div class="spinner spinner-lg spinner-success"></div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="formObj">
+            <form action="#" class="form form-label-right" [formGroup]="formGroup">
+                <div class="form-group row">
+                    <div class="col-lg-4">
+                        <label class="form-label">Enter Title</label>
+                        <input
+                                type="text"
+                                class="form-control form-control-lg form-control-solid"
+                                name="title"
+                                placeholder="Title"
+                                autocomplete="off"
+                                [class.is-invalid]="isControlInvalid('title')"
+                                [class.is-valid]="isControlValid('title')"
+                                formControlName="title"
+                        />
+                        <div class="valid-feedback" *ngIf="isControlValid('title')">
+                            Title was entered correct
+                        </div>
+                        <div
+                                class="invalid-feedback"
+                                *ngIf="controlHasError('required', 'title')"
+                        >
+                            Title is required
+                        </div>
+                        <div
+                                class="invalid-feedback"
+                                *ngIf="controlHasError('minlength', 'title')"
+                        >
+                            Title should have at least 3 symbols
+                        </div>
+                        <div
+                                class="invalid-feedback"
+                                *ngIf="controlHasError('maxlength', 'title')"
+                        >
+                            Title should have maximum 100 symbols
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">Enter Content</label>
+                        <input
+                                type="text"
+                                class="form-control form-control-lg form-control-solid"
+                                name="title"
+                                placeholder="Title"
+                                autocomplete="off"
+                                [class.is-invalid]="isControlInvalid('content')"
+                                [class.is-valid]="isControlValid('content')"
+                                formControlName="content"
+                        />
+                        <div class="valid-feedback" *ngIf="isControlValid('content')">
+                            Content was entered correct
+                        </div>
+                        <div
+                                class="invalid-feedback"
+                                *ngIf="controlHasError('required', 'content')"
+                        >
+                            Content is required
+                        </div>
+                        <div
+                                class="invalid-feedback"
+                                *ngIf="controlHasError('minlength', 'content')"
+                        >
+                            Content should have at least 3 symbols
+                        </div>
+                        <div
+                                class="invalid-feedback"
+                                *ngIf="controlHasError('maxlength', 'content')"
+                        >
+                            Content should have maximum 100 symbols
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+    <div class="modal-footer">
+        <button
+                type="button"
+                class="btn btn-light btn-elevate mr-2"
+                (click)="modal.dismiss()"
+        >
+            Cancel
+        </button>
+        <ng-container *ngIf="formObj">
+            <button
+                    type="submit"
+                    class="btn btn-primary btn-elevate"
+                    (click)="save()"
+                    [disabled]="formGroup.invalid"
+            >
+                Save
+            </button>
+        </ng-container>
+    </div>
+</div>
