@@ -71,7 +71,7 @@ export class EditArticlesModalComponent implements OnInit, OnDestroy {
     }
 
     edit() {
-        const sbUpdate = this.templateService.update(this.formObj.id, this.prepareFormEdit()).pipe(
+        const sbUpdate = this.templateService.update(this.formObj.id, this.prepareFormData()).pipe(
             tap(() => {
                 this.modal.close();
             }),
