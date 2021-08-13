@@ -25,4 +25,4 @@ deploy_staging:
   only:
     - master
   script:
-    - rsync -rav --delete dist/ root@10.10.10.223:/var/www/html/
+    - rsync -rav --delete dist/ root@10.10.10.223:/var/www/html/angular
