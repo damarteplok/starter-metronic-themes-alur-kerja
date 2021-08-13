@@ -1,7 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Component} from '@angular/core';
 import {ArticlesService} from './articles.service';
-import {IFilterView, IPaginatorView, ISortView, PaginatorState, SortState} from '../../_metronic/shared/crud-table';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {BaseCrudPagesComponent} from '../shared/component/base-crud-pages.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -22,7 +20,7 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
     super(tableService, fb);
   }
 
-  delete(id: number) {  // +
+  delete(id: number) {
     const modalRef = this.modalService.open(DeleteArticlesModalComponent);
     modalRef.componentInstance.id = id;
     modalRef.result.then(() => this.tableService.fetch(), () => {});

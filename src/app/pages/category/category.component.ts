@@ -1,10 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IFilterView, IPaginatorView, ISortView, PaginatorState, SortState} from '../../_metronic/shared/crud-table';
-import {Subscription} from 'rxjs';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
 import {CategoryService} from './category.service';
 import {BaseCrudPagesComponent} from '../shared/component/base-crud-pages.component';
-import {ArticlesService} from '../articles/articles.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {DeleteCategoryModalComponent} from './components/delete-category-modal.component';
 
 @Component({
   selector: 'app-category',
@@ -15,9 +14,16 @@ export class CategoryComponent extends BaseCrudPagesComponent {
 
   constructor(
       public tableService: CategoryService,
-      protected fb: FormBuilder
+      protected fb: FormBuilder,
+      private modalService: NgbModal,
   ) {
     super(tableService, fb);
+  }
+
+  delete(id: number) {
+    const modalRef = this.modalService.open(DeleteCategoryModalComponent);
+    modalRef.componentInstance.id = id;
+    modalRef.result.then(() => this.tableService.fetch(), () => {});
   }
 
   filterForm() {

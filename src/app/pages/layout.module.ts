@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { PagesRoutingModule } from './pages-routing.module';
 import {
+  NgbActiveModal,
   NgbDropdownModule,
   NgbProgressbarModule,
 } from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +24,9 @@ import { AsideDynamicComponent } from './_layout/components/aside-dynamic/aside-
 import { HeaderMenuDynamicComponent } from './_layout/components/header/header-menu-dynamic/header-menu-dynamic.component';
 import {CRUDTableModule} from '../_metronic/shared/crud-table';
 import {BaseCrudPagesComponent} from './shared/component/base-crud-pages.component';
+import {BaseDeletePagesComponent} from './shared/component/base-delete-pages.component';
+import {DeleteArticlesModalComponent} from './articles/components/delete-articles-modal/delete-articles-modal.component';
+import {DeleteCategoryModalComponent} from './category/components/delete-category-modal.component';
 
 
 @NgModule({
@@ -38,7 +42,8 @@ import {BaseCrudPagesComponent} from './shared/component/base-crud-pages.compone
     LanguageSelectorComponent,
     AsideDynamicComponent,
     HeaderMenuDynamicComponent,
-    BaseCrudPagesComponent
+    BaseCrudPagesComponent,
+    BaseDeletePagesComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +56,11 @@ import {BaseCrudPagesComponent} from './shared/component/base-crud-pages.compone
     CoreModule,
     CRUDTableModule,
     SubheaderModule,
+  ],
+  providers: [
+    NgbActiveModal,
+    DeleteArticlesModalComponent,
+    DeleteCategoryModalComponent
   ],
 })
 export class LayoutModule { }
