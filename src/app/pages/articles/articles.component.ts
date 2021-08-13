@@ -3,26 +3,20 @@ import {Subscription} from 'rxjs';
 import {ArticlesService} from './articles.service';
 import {IFilterView, IPaginatorView, ISortView, PaginatorState, SortState} from '../../_metronic/shared/crud-table';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {BaseCrudPagesComponent} from '../shared/component/base-crud-pages.component';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss']
 })
-export class ArticlesComponent implements OnInit, OnDestroy, ISortView, IFilterView, IPaginatorView {
-  isLoading: boolean;
-  private subscriptions: Subscription[] = [];
-  filterGroup: FormGroup;
-  sorting: SortState;
-  paginator: PaginatorState;
+export class ArticlesComponent extends BaseCrudPagesComponent {
 
   constructor(
       public tableService: ArticlesService,
-      private fb: FormBuilder
-  ) { }
-
-  paginate(paginator: PaginatorState) {
-    this.tableService.patchState({ paginator });
+      protected fb: FormBuilder
+  ) {
+    super(tableService, fb);
   }
 
   filterForm() {
@@ -45,29 +39,12 @@ export class ArticlesComponent implements OnInit, OnDestroy, ISortView, IFilterV
     this.tableService.patchState({ filter });
   }
 
-  sort(column: string): void {
-    const sorting = this.sorting;
-    const isActiveColumn = sorting.column === column;
-    if (!isActiveColumn) {
-      sorting.column = column;
-      sorting.direction = 'asc';
-    } else {
-      sorting.direction = sorting.direction === 'asc' ? 'desc' : 'asc';
-    }
-    this.tableService.patchState({ sorting });
-  }
-
   ngOnInit(): void {
-    this.filterForm();
-    this.tableService.fetch();
-    const sb = this.tableService.isLoading$.subscribe(res => this.isLoading = res);
-    this.subscriptions.push(sb);
-    this.sorting = this.tableService.sorting;
-    this.paginator = this.tableService.paginator;
+    super.ngOnInit();
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((sb) => sb.unsubscribe());
+    super.ngOnDestroy();
   }
 
 }

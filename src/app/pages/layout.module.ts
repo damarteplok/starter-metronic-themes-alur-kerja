@@ -22,6 +22,7 @@ import { SubheaderModule } from '../_metronic/partials/layout/subheader/subheade
 import { AsideDynamicComponent } from './_layout/components/aside-dynamic/aside-dynamic.component';
 import { HeaderMenuDynamicComponent } from './_layout/components/header/header-menu-dynamic/header-menu-dynamic.component';
 import {CRUDTableModule} from '../_metronic/shared/crud-table';
+import {BaseCrudPagesComponent} from './shared/component/base-crud-pages.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {CRUDTableModule} from '../_metronic/shared/crud-table';
     LanguageSelectorComponent,
     AsideDynamicComponent,
     HeaderMenuDynamicComponent,
+    BaseCrudPagesComponent
   ],
   imports: [
     CommonModule,
