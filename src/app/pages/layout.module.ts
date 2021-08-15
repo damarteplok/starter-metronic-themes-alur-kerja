@@ -26,7 +26,8 @@ import {CRUDTableModule} from '../_metronic/shared/crud-table';
 import {BaseCrudPagesComponent} from './shared/component/base-crud-pages.component';
 import {BaseDeletePagesComponent} from './shared/component/base-delete-pages.component';
 import {DeleteArticlesModalComponent} from './articles/components/delete-articles-modal/delete-articles-modal.component';
-import {DeleteCategoryModalComponent} from './category/components/delete-category-modal.component';
+import {DeleteCategoryModalComponent} from './category/components/delete-category-modal/delete-category-modal.component';
+import {BaseEditPagesComponent} from './shared/component/base-edit-pages.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {DeleteCategoryModalComponent} from './category/components/delete-categor
     AsideDynamicComponent,
     HeaderMenuDynamicComponent,
     BaseCrudPagesComponent,
-    BaseDeletePagesComponent
+    BaseDeletePagesComponent,
+    BaseEditPagesComponent,
   ],
   imports: [
     CommonModule,

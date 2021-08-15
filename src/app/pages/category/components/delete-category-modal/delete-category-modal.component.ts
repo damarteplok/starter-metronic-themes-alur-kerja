@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {BaseDeletePagesComponent} from '../../shared/component/base-delete-pages.component';
+import {BaseDeletePagesComponent} from '../../../shared/component/base-delete-pages.component';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {CategoryService} from '../category.service';
+import {CategoryService} from '../../category.service';
 
 @Component({
     selector: 'app-delete-category-modal',

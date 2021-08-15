@@ -1,9 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {of, Subscription} from 'rxjs';
-import {catchError, first, tap} from 'rxjs/operators';
+import {FormBuilder, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
 import {CategoryService} from '../../category.service';
+import {BaseEditPagesComponent} from '../../../shared/component/base-edit-pages.component';
 
 const EMPTY_OBJ: any = {
     id: undefined,
@@ -16,40 +16,22 @@ const EMPTY_OBJ: any = {
     templateUrl: './edit-category-modal.component.html',
     styleUrls: ['./edit-category-modal.component.scss'],
 })
-export class EditCategoryModalComponent implements OnInit, OnDestroy {
-    @Input() id: number;
-    isLoading$;
-    formObj: any;
-    formGroup: FormGroup;
-    private subscriptions: Subscription[] = [];
+export class EditCategoryModalComponent extends BaseEditPagesComponent{
+    EMPTY_OBJ = {
+        id: undefined,
+        name: ''
+    };
+    subscriptions: Subscription[] = [];
     constructor(
-        private templateService: CategoryService,
-        private fb: FormBuilder,
+        protected templateService: CategoryService,
+        protected fb: FormBuilder,
         public modal: NgbActiveModal
-    ) { }
-
-    ngOnInit(): void {
-        this.isLoading$ = this.templateService.isLoading$;
-        this.loadFormData();
+    ) {
+        super(templateService, fb, modal);
     }
 
-    loadFormData() {
-        if (!this.id) {
-            this.formObj = EMPTY_OBJ;
-            this.loadForm();
-        } else {
-            const sb = this.templateService.getItemById(this.id).pipe(
-                first(),
-                catchError((errorMessage) => {
-                    this.modal.dismiss(errorMessage);
-                    return of(EMPTY_OBJ);
-                })
-            ).subscribe((res: any) => {
-                this.formObj = res.data;
-                this.loadForm();
-            });
-            this.subscriptions.push(sb);
-        }
+    ngOnInit(): void {
+        super.ngOnInit();
     }
 
     loadForm() {
@@ -58,54 +40,19 @@ export class EditCategoryModalComponent implements OnInit, OnDestroy {
         });
     }
 
-    save() {
-        this.prepareFormData();
-        if (this.formObj.id) {
-            this.edit();
-        } else {
-            this.create();
-        }
-    }
-
-    edit() {
-        const sbUpdate = this.templateService.update(this.formObj.id, this.prepareFormEdit()).pipe(
-            tap(() => {
-                this.modal.close();
-            }),
-            catchError((errorMessage) => {
-                this.modal.dismiss(errorMessage);
-                return of(this.formObj);
-            }),
-        ).subscribe(res => this.formObj = res);
-        this.subscriptions.push(sbUpdate);
-    }
-
-    create() {
-        const sbCreate = this.templateService.create(this.formObj).pipe(
-            tap(() => {
-                this.modal.close();
-            }),
-            catchError((errorMessage) => {
-                this.modal.dismiss(errorMessage);
-                return of(this.formObj);
-            }),
-        ).subscribe((res: any) => this.formObj = res);
-        this.subscriptions.push(sbCreate);
-    }
-
-    private prepareFormData() {
+    prepareFormData() {
         const formData = this.formGroup.value;
         this.formObj.name = formData.name;
     }
 
-    private prepareFormEdit() {
+    prepareFormEdit() {
         return {
             name: this.formObj.name
         }
     }
 
     ngOnDestroy(): void {
-        this.subscriptions.forEach(sb => sb.unsubscribe());
+        super.ngOnDestroy();
     }
 
     // helpers for View

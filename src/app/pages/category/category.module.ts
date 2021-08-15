@@ -5,7 +5,7 @@ import {InlineSVGModule} from 'ng-inline-svg';
 import {CRUDTableModule} from '../../_metronic/shared/crud-table';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CategoryComponent} from './category.component';
-import {DeleteCategoryModalComponent} from './components/delete-category-modal.component';
+import {DeleteCategoryModalComponent} from './components/delete-category-modal/delete-category-modal.component';
 import {EditCategoryModalComponent} from './components/edit-category-modal/edit-category-modal.component';
 import {NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CustomAdapter, CustomDateParserFormatter} from '../../_metronic/core';
