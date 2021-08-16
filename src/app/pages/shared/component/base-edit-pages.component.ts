@@ -16,6 +16,7 @@ export class BaseEditPagesComponent implements OnInit, OnDestroy {
         id: undefined,
     };
     @Input() id: number;
+    @Input() show: boolean;
     isLoading$;
     formObj: any;
     formGroup: FormGroup;

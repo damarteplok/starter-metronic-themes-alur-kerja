@@ -2,7 +2,8 @@
     <div class="modal-header">
         <div class="modal-title h4" id="example-modal-sizes-title-lg">
             <ng-container *ngIf="formObj">
-                <ng-container *ngIf="formObj.id">Edit</ng-container>
+                <ng-container *ngIf="formObj.id && !show">Edit</ng-container>
+                <ng-container *ngIf="formObj.id && show">View</ng-container>
                 <ng-container *ngIf="!formObj.id">Create</ng-container>
                 Category
             </ng-container>
@@ -31,6 +32,7 @@
                                 autocomplete="off"
                                 [class.is-invalid]="isControlInvalid('name')"
                                 [class.is-valid]="isControlValid('name')"
+                                [readOnly]="show"
                                 formControlName="name"
                         />
                         <div class="valid-feedback" *ngIf="isControlValid('name')">
@@ -59,7 +61,7 @@
             </form>
         </ng-container>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" *ngIf="!show">
         <button
                 type="button"
                 class="btn btn-light btn-elevate mr-2"

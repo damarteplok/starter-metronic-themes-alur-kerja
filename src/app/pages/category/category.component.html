@@ -49,14 +49,21 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.createdDate | date: 'dd-MMM-yyyy'}}</td>
                     <td>
+                        <!-- view -->
+                        <a title="View" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                           (click)="edit(item.id, 'view')">
+                            <span [inlineSVG]="'./assets/media/svg/icons/General/Visible.svg'" cacheSVG="true"
+                                  class="svg-icon svg-icon-md svg-icon-primary">
+                            </span>
+                        </a>
                         <!-- edit -->
-                        <a title="Edit customer" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                        <a title="Edit" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
                            (click)="edit(item.id)">
                             <span [inlineSVG]="'./assets/media/svg/icons/Communication/Write.svg'" cacheSVG="true"
                                   class="svg-icon svg-icon-md svg-icon-primary">
                             </span>
                         </a>
-                        <a title="Delete customer"
+                        <a title="Delete"
                            class="btn btn-icon btn-light btn-hover-danger btn-sm"
                            (click)="delete(item.id)"
                         >

@@ -25,9 +25,13 @@ export class CategoryComponent extends BaseCrudPagesComponent {
     this.edit(undefined);
   }
 
-  edit(id: number) {
+  edit(id: number, type: string = 'edit') {
     const modalRef = this.modalService.open(EditCategoryModalComponent, { size: 'xl' });
     modalRef.componentInstance.id = id;
+    if (type !== 'edit') {
+      // Show View
+      modalRef.componentInstance.show = true;
+    }
     modalRef.result.then(() =>
             this.tableService.fetch(),
         () => { }
