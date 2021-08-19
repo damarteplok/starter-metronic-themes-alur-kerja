@@ -12,6 +12,7 @@ import {BaseEditPagesComponent} from '../base-edit-pages.component';
 })
 export class EditCrudModalComponent extends BaseEditPagesComponent{
     @Input() title: string;
+    @Input() arrFormGroup: {title: string, form: string}[];
     subscriptions: Subscription[] = [];
     constructor(
         @Inject('') protected templateService: any,

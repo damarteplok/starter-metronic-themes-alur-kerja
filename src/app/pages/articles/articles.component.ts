@@ -29,6 +29,10 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
     const modalRef = this.modalService.open(EditArticlesModalComponent, { size: 'xl' });
     modalRef.componentInstance.id = id;
     modalRef.componentInstance.title = 'Articles';
+    modalRef.componentInstance.arrFormGroup = [
+      {title: 'Title', form: 'title'},
+      {title: 'Content', form: 'content'},
+    ];
     if (type !== 'edit') {
       // Show View
       modalRef.componentInstance.show = true;

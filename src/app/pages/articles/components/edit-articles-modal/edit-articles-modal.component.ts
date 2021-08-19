@@ -6,7 +6,7 @@ import {EditCrudModalComponent} from '../../../shared/component/crud/edit-crud/e
 
 @Component({
     selector: 'app-edit-articles-modal',
-    templateUrl: './edit-articles-modal.component.html',
+    templateUrl: '../../../shared/component/crud/edit-crud/edit-crud-modal.component.html',
     styleUrls: ['../../../shared/component/crud/edit-crud/edit-crud-modal.component.scss'],
 })
 export class EditArticlesModalComponent extends EditCrudModalComponent{

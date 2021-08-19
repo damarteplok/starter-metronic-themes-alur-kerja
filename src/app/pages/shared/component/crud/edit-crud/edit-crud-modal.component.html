@@ -22,39 +22,39 @@
         <ng-container *ngIf="formObj">
             <form action="#" class="form form-label-right" [formGroup]="formGroup">
                 <div class="form-group row">
-                    <div class="col-lg-4">
-                        <label class="form-label">Enter Name</label>
+                    <div class="col-lg-4" *ngFor="let item of arrFormGroup">
+                        <label class="form-label">Enter {{item.title}}</label>
                         <input
                                 type="text"
                                 class="form-control form-control-lg form-control-solid"
                                 name="name"
                                 placeholder="Name"
                                 autocomplete="off"
-                                [class.is-invalid]="isControlInvalid('name')"
-                                [class.is-valid]="isControlValid('name')"
+                                [class.is-invalid]="isControlInvalid(item.form)"
+                                [class.is-valid]="isControlValid(item.form)"
                                 [readOnly]="show"
-                                formControlName="name"
+                                formControlName="{{item.form}}"
                         />
-                        <div class="valid-feedback" *ngIf="isControlValid('name')">
-                            Name was entered correct
+                        <div class="valid-feedback" *ngIf="isControlValid(item.form)">
+                            {{item.title}} was entered correct
                         </div>
                         <div
                                 class="invalid-feedback"
-                                *ngIf="controlHasError('required', 'name')"
+                                *ngIf="controlHasError('required', item.form)"
                         >
-                            Name is required
+                            {{item.title}} is required
                         </div>
                         <div
                                 class="invalid-feedback"
-                                *ngIf="controlHasError('minlength', 'name')"
+                                *ngIf="controlHasError('minlength', item.form)"
                         >
-                            Name should have at least 3 symbols
+                            {{item.title}} should have at least 3 symbols
                         </div>
                         <div
                                 class="invalid-feedback"
-                                *ngIf="controlHasError('maxlength', 'name')"
+                                *ngIf="controlHasError('maxlength', item.form)"
                         >
-                            Name should have maximum 100 symbols
+                            {{item.title}} should have maximum 100 symbols
                         </div>
                     </div>
                 </div>
