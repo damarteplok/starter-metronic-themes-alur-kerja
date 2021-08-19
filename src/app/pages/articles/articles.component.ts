@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ArticlesService} from './articles.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {BaseCrudPagesComponent} from '../shared/component/base-crud-pages.component';
+import {BaseCrudPagesComponent} from '../shared/component/crud/base-crud-pages.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DeleteArticlesModalComponent} from './components/delete-articles-modal/delete-articles-modal.component';
 import {EditArticlesModalComponent} from './components/edit-articles-modal/edit-articles-modal.component';
@@ -28,6 +28,7 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
   edit(id: number, type: string = 'edit') {
     const modalRef = this.modalService.open(EditArticlesModalComponent, { size: 'xl' });
     modalRef.componentInstance.id = id;
+    modalRef.componentInstance.title = 'Articles';
     if (type !== 'edit') {
       // Show View
       modalRef.componentInstance.show = true;
@@ -41,6 +42,7 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
   delete(id: number) {
     const modalRef = this.modalService.open(DeleteArticlesModalComponent);
     modalRef.componentInstance.id = id;
+    modalRef.componentInstance.title = 'Articles';
     modalRef.result.then(() => this.tableService.fetch(), () => {});
   }
 

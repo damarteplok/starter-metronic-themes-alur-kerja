@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {ArticlesService} from '../../articles.service';
-import {BaseEditPagesComponent} from '../../../shared/component/base-edit-pages.component';
+import {EditCrudModalComponent} from '../../../shared/component/crud/edit-crud/edit-crud-modal.component';
 
 @Component({
     selector: 'app-edit-articles-modal',
     templateUrl: './edit-articles-modal.component.html',
-    styleUrls: ['./edit-articles-modal.component.scss'],
+    styleUrls: ['../../../shared/component/crud/edit-crud/edit-crud-modal.component.scss'],
 })
-export class EditArticlesModalComponent extends BaseEditPagesComponent{
+export class EditArticlesModalComponent extends EditCrudModalComponent{
     EMPTY_OBJ = {
         id: undefined,
         title: '',

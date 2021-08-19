@@ -23,11 +23,14 @@ import { SubheaderModule } from '../_metronic/partials/layout/subheader/subheade
 import { AsideDynamicComponent } from './_layout/components/aside-dynamic/aside-dynamic.component';
 import { HeaderMenuDynamicComponent } from './_layout/components/header/header-menu-dynamic/header-menu-dynamic.component';
 import {CRUDTableModule} from '../_metronic/shared/crud-table';
-import {BaseCrudPagesComponent} from './shared/component/base-crud-pages.component';
-import {BaseDeletePagesComponent} from './shared/component/base-delete-pages.component';
+import {BaseCrudPagesComponent} from './shared/component/crud/base-crud-pages.component';
+import {BaseDeletePagesComponent} from './shared/component/crud/base-delete-pages.component';
 import {DeleteArticlesModalComponent} from './articles/components/delete-articles-modal/delete-articles-modal.component';
 import {DeleteCategoryModalComponent} from './category/components/delete-category-modal/delete-category-modal.component';
-import {BaseEditPagesComponent} from './shared/component/base-edit-pages.component';
+import {BaseEditPagesComponent} from './shared/component/crud/base-edit-pages.component';
+import {DeleteCrudModalComponent} from './shared/component/crud/delete-crud/delete-crud-modal.component';
+import {EditCrudModalComponent} from './shared/component/crud/edit-crud/edit-crud-modal.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -46,6 +49,8 @@ import {BaseEditPagesComponent} from './shared/component/base-edit-pages.compone
     BaseCrudPagesComponent,
     BaseDeletePagesComponent,
     BaseEditPagesComponent,
+    DeleteCrudModalComponent,
+    EditCrudModalComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +63,7 @@ import {BaseEditPagesComponent} from './shared/component/base-edit-pages.compone
     CoreModule,
     CRUDTableModule,
     SubheaderModule,
+    ReactiveFormsModule,
   ],
   providers: [
     NgbActiveModal,

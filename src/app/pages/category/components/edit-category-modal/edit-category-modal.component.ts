@@ -1,27 +1,19 @@
 import {Component} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs';
 import {CategoryService} from '../../category.service';
-import {BaseEditPagesComponent} from '../../../shared/component/base-edit-pages.component';
-
-const EMPTY_OBJ: any = {
-    id: undefined,
-    name: ''
-};
-
+import {EditCrudModalComponent} from '../../../shared/component/crud/edit-crud/edit-crud-modal.component';
 
 @Component({
     selector: 'app-edit-category-modal',
-    templateUrl: './edit-category-modal.component.html',
-    styleUrls: ['./edit-category-modal.component.scss'],
+    templateUrl: '../../../shared/component/crud/edit-crud/edit-crud-modal.component.html',
+    styleUrls: ['../../../shared/component/crud/edit-crud/edit-crud-modal.component.scss'],
 })
-export class EditCategoryModalComponent extends BaseEditPagesComponent{
+export class EditCategoryModalComponent extends EditCrudModalComponent{
     EMPTY_OBJ = {
         id: undefined,
         name: ''
     };
-    subscriptions: Subscription[] = [];
     constructor(
         protected templateService: CategoryService,
         protected fb: FormBuilder,
@@ -53,26 +45,5 @@ export class EditCategoryModalComponent extends BaseEditPagesComponent{
 
     ngOnDestroy(): void {
         super.ngOnDestroy();
-    }
-
-    // helpers for View
-    isControlValid(controlName: string): boolean {
-        const control = this.formGroup.controls[controlName];
-        return control.valid && (control.dirty || control.touched);
-    }
-
-    isControlInvalid(controlName: string): boolean {
-        const control = this.formGroup.controls[controlName];
-        return control.invalid && (control.dirty || control.touched);
-    }
-
-    controlHasError(validation, controlName): boolean {
-        const control = this.formGroup.controls[controlName];
-        return control.hasError(validation) && (control.dirty || control.touched);
-    }
-
-    isControlTouched(controlName): boolean {
-        const control = this.formGroup.controls[controlName];
-        return control.dirty || control.touched;
     }
 }

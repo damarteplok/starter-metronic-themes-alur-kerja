@@ -1,20 +1,20 @@
 import {Component} from '@angular/core';
-import {BaseDeletePagesComponent} from '../../../shared/component/base-delete-pages.component';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {CategoryService} from '../../category.service';
+import {DeleteCrudModalComponent} from '../../../shared/component/crud/delete-crud/delete-crud-modal.component';
 
 @Component({
     selector: 'app-delete-category-modal',
-    templateUrl: './delete-category-modal.component.html',
-    styleUrls: ['./delete-category-modal.component.scss']
+    templateUrl: '../../../shared/component/crud/delete-crud/delete-crud-modal.component.html',
+    styleUrls: ['../../../shared/component/crud/delete-crud/delete-crud-modal.component.html']
 })
 
-export class DeleteCategoryModalComponent extends BaseDeletePagesComponent{
+export class DeleteCategoryModalComponent extends DeleteCrudModalComponent{
     constructor(
-        public tableService: CategoryService,
+        public deleteService: CategoryService,
         public modal: NgbActiveModal
     ) {
-        super(tableService, modal);
+        super(deleteService, modal);
     }
 
     ngOnInit(): void {

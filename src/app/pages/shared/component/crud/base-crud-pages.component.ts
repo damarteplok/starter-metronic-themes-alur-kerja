@@ -1,8 +1,8 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {IFilterView, IPaginatorView, ISortView, PaginatorState, SortState} from '../../../_metronic/shared/crud-table';
+import {IFilterView, IPaginatorView, ISortView, PaginatorState, SortState} from '../../../../_metronic/shared/crud-table';
 import {Subscription} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {ArticlesService} from '../../articles/articles.service';
+import {ArticlesService} from '../../../articles/articles.service';
 
 @Component({
     selector: 'app-base-crud-pages',
