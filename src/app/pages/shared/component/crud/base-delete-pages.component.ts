@@ -5,12 +5,13 @@ import {catchError, delay, finalize, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'app-base-delete-pages',
-    template: ``,
-    styles: [],
+    templateUrl: './delete-crud/delete-crud-modal.component.html',
+    styleUrls: ['./delete-crud/delete-crud-modal.component.scss']
 })
 
 export class BaseDeletePagesComponent implements OnInit, OnDestroy {
     @Input() id: number;
+    @Input() title: string;
     isLoading = false;
     subscriptions: Subscription[] = [];
 
