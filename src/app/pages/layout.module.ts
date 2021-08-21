@@ -29,7 +29,6 @@ import {DeleteArticlesModalComponent} from './articles/components/delete-article
 import {DeleteCategoryModalComponent} from './category/components/delete-category-modal/delete-category-modal.component';
 import {BaseEditPagesComponent} from './shared/component/crud/base-edit-pages.component';
 import {DeleteCrudModalComponent} from './shared/component/crud/delete-crud/delete-crud-modal.component';
-import {EditCrudModalComponent} from './shared/component/crud/edit-crud/edit-crud-modal.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
@@ -50,7 +49,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     BaseDeletePagesComponent,
     BaseEditPagesComponent,
     DeleteCrudModalComponent,
-    EditCrudModalComponent
   ],
   imports: [
     CommonModule,

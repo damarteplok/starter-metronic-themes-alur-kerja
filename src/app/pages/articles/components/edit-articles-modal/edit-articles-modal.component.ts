@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {ArticlesService} from '../../articles.service';
-import {EditCrudModalComponent} from '../../../shared/component/crud/edit-crud/edit-crud-modal.component';
+import {BaseEditPagesComponent} from '../../../shared/component/crud/base-edit-pages.component';
 
 @Component({
     selector: 'app-edit-articles-modal',
     templateUrl: '../../../shared/component/crud/edit-crud/edit-crud-modal.component.html',
     styleUrls: ['../../../shared/component/crud/edit-crud/edit-crud-modal.component.scss'],
 })
-export class EditArticlesModalComponent extends EditCrudModalComponent{
+export class EditArticlesModalComponent extends BaseEditPagesComponent{
     EMPTY_OBJ = {
         id: undefined,
         title: '',
@@ -21,10 +21,6 @@ export class EditArticlesModalComponent extends EditCrudModalComponent{
         public modal: NgbActiveModal
     ) {
         super(templateService, fb, modal);
-    }
-
-    ngOnInit(): void {
-        super.ngOnInit();
     }
 
     loadForm() {
@@ -54,7 +50,4 @@ export class EditArticlesModalComponent extends EditCrudModalComponent{
         };
     }
 
-    ngOnDestroy(): void {
-        super.ngOnDestroy();
-    }
 }

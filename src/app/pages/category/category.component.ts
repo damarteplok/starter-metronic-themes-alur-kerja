@@ -31,7 +31,7 @@ export class CategoryComponent extends BaseCrudPagesComponent {
     modalRef.componentInstance.id = id;
     modalRef.componentInstance.title = 'Category';
     modalRef.componentInstance.arrFormGroup = [
-      {title: 'Name', form: 'name'}
+      {title: 'Name', form: 'name', type: 'text'}
     ];
     if (type !== 'edit') {
       // Show View

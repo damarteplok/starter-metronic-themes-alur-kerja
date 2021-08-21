@@ -3,24 +3,33 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {of, Subscription} from 'rxjs';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {catchError, first, tap} from 'rxjs/operators';
+import {LIST_TYPE_INPUT} from './model-crud/crud.model';
 
 @Component({
     selector: 'app-base-edit-pages',
-    template: ``,
-    styles: [],
+    templateUrl: './edit-crud/edit-crud-modal.component.html',
+    styleUrls: ['./edit-crud/edit-crud-modal.component.scss'],
 })
 
 export class BaseEditPagesComponent implements OnInit, OnDestroy {
-    // OVERRIDE THIS EMPTY_OBJ (FOR DEFAULT STATE IN FORM)
-    EMPTY_OBJ: any = {
-        id: undefined,
-    };
     @Input() id: number;
     @Input() show: boolean;
+    @Input() title: string;
+    @Input() arrFormGroup: {
+        title: string,
+        form: string,
+        type?: string,
+        url?: string,
+        metaData?: string,
+        placeHolder?: string,
+        name?: string
+    }[];
     isLoading$;
     formObj: any;
     formGroup: FormGroup;
     subscriptions: Subscription[] = [];
+    htmlInputType = LIST_TYPE_INPUT;
+    EMPTY_OBJ: {} = {};
     constructor(
         @Inject('') protected service: any,
         protected fb: FormBuilder,
@@ -53,9 +62,7 @@ export class BaseEditPagesComponent implements OnInit, OnDestroy {
 
     // OVERRIDE THIS (ADD CUSTOM FORMCONTROLL AND VALIDATION)
     loadForm() {
-        this.formGroup = this.fb.group({
-            name: [this.formObj.name, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])]
-        });
+
     }
 
     save() {

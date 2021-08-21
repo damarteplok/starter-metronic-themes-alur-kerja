@@ -9,10 +9,7 @@
             </ng-container>
         </div>
     </div>
-    <div
-            class="overlay overlay-block cursor-default modal-body"
-            style="min-height: 404px"
-    >
+    <div class="overlay overlay-block cursor-default modal-body" style="min-height: 404px">
         <ng-container *ngIf="isLoading$ | async">
             <div class="overlay-layer bg-transparent">
                 <div class="spinner spinner-lg spinner-success"></div>
@@ -21,40 +18,35 @@
 
         <ng-container *ngIf="formObj">
             <form action="#" class="form form-label-right" [formGroup]="formGroup">
-                <div class="form-group row">
-                    <div class="col-lg-4" *ngFor="let item of arrFormGroup">
+                <div class="form-group row" *ngFor="let item of arrFormGroup">
+                    <div class="col-lg-6">
                         <label class="form-label">Enter {{item.title}}</label>
-                        <input
-                                type="text"
+
+                        <input *ngIf="htmlInputType.includes(item.type ? item.type : 'text')"
+                                type="{{item.type}}"
                                 class="form-control form-control-lg form-control-solid"
-                                name="name"
-                                placeholder="Name"
+                                name="{{item.name ? item.name :  item.title}}"
+                                placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
                                 autocomplete="off"
                                 [class.is-invalid]="isControlInvalid(item.form)"
                                 [class.is-valid]="isControlValid(item.form)"
                                 [readOnly]="show"
                                 formControlName="{{item.form}}"
                         />
+
+                        <textarea *ngIf="item.type === 'textarea'" name="{{item.name ? item.name : item.title}}" formControlName="{{item.form}}">{{item.placeHolder ? item.placeHolder : item.title}}</textarea>
+
                         <div class="valid-feedback" *ngIf="isControlValid(item.form)">
                             {{item.title}} was entered correct
                         </div>
-                        <div
-                                class="invalid-feedback"
-                                *ngIf="controlHasError('required', item.form)"
-                        >
+                        <div class="invalid-feedback" *ngIf="controlHasError('required', item.form)">
                             {{item.title}} is required
                         </div>
-                        <div
-                                class="invalid-feedback"
-                                *ngIf="controlHasError('minlength', item.form)"
-                        >
-                            {{item.title}} should have at least 3 symbols
+                        <div class="invalid-feedback" *ngIf="controlHasError('minlength', item.form)">
+                            {{item.title}} minimun length not achieved
                         </div>
-                        <div
-                                class="invalid-feedback"
-                                *ngIf="controlHasError('maxlength', item.form)"
-                        >
-                            {{item.title}} should have maximum 100 symbols
+                        <div class="invalid-feedback" *ngIf="controlHasError('maxlength', item.form)">
+                            {{item.title}} maximun length passed
                         </div>
                     </div>
                 </div>
