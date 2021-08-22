@@ -4,7 +4,6 @@ import {CategoryService} from './category.service';
 import {BaseCrudPagesComponent} from '../shared/component/crud/base-crud-pages.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditCategoryModalComponent} from './components/edit-category-modal/edit-category-modal.component';
-import {DeleteCrudModalComponent} from '../shared/component/crud/delete-crud/delete-crud-modal.component';
 import {DeleteCategoryModalComponent} from './components/delete-category-modal/delete-category-modal.component';
 
 @Component({
