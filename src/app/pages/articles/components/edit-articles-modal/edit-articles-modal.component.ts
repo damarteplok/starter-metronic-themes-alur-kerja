@@ -27,6 +27,7 @@ export class EditArticlesModalComponent extends BaseEditPagesComponent{
         this.formGroup = this.fb.group({
             title: [this.formObj.title, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])],
             content: [this.formObj.content, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])],
+            date: [this.formObj.date, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])],
         });
     }
 

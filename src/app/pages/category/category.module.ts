@@ -9,6 +9,7 @@ import {DeleteCategoryModalComponent} from './components/delete-category-modal/d
 import {EditCategoryModalComponent} from './components/edit-category-modal/edit-category-modal.component';
 import {NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CustomAdapter, CustomDateParserFormatter} from '../../_metronic/core';
+import {EditorModule} from '@tinymce/tinymce-angular';
 
 @NgModule({
     declarations: [CategoryComponent, DeleteCategoryModalComponent, EditCategoryModalComponent],
@@ -29,6 +30,7 @@ import {CustomAdapter, CustomDateParserFormatter} from '../../_metronic/core';
         ReactiveFormsModule,
         NgbModule,
         NgbDatepickerModule,
+        EditorModule,
     ],
     providers: [
         {

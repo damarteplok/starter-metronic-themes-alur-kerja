@@ -19,22 +19,49 @@
         <ng-container *ngIf="formObj">
             <form action="#" class="form form-label-right" [formGroup]="formGroup">
                 <div class="form-group row" *ngFor="let item of arrFormGroup">
+                    <label  class="col-2 col-form-label">{{item.title}} <span *ngIf="item.mandatory" class="text-danger">*</span></label>
                     <div class="col-lg-6">
-                        <label class="form-label">Enter {{item.title}}</label>
-
                         <input *ngIf="htmlInputType.includes(item.type ? item.type : 'text')"
                                 type="{{item.type}}"
-                                class="form-control form-control-lg form-control-solid"
+                                class="form-control form-control-lg"
                                 name="{{item.name ? item.name :  item.title}}"
                                 placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
                                 autocomplete="off"
                                 [class.is-invalid]="isControlInvalid(item.form)"
                                 [class.is-valid]="isControlValid(item.form)"
-                                [readOnly]="show"
+                                [readOnly]="show || item.readonly"
                                 formControlName="{{item.form}}"
                         />
 
-                        <textarea *ngIf="item.type === 'textarea'" name="{{item.name ? item.name : item.title}}" formControlName="{{item.form}}">{{item.placeHolder ? item.placeHolder : item.title}}</textarea>
+                        <textarea *ngIf="item.type === 'textarea'"
+                                  name="{{item.name ? item.name : item.title}}"
+                                  formControlName="{{item.form}}"
+                                  class="form-control form-control-lg"
+                                  rows="3"
+                                  [class.is-invalid]="isControlInvalid(item.form)"
+                                  [class.is-valid]="isControlValid(item.form)"
+                                  [readOnly]="show"
+                        >
+                            {{item.placeHolder ? item.placeHolder : item.title}}
+                        </textarea>
+
+<!--                        TODO-->
+                        <ng-container *ngIf="false">
+                            <h1>TinyMCE 5 Angular Demo</h1>
+                            <editor
+                                    [init]="{
+                                             height: 500,
+                                             menubar: false,
+                                             plugins: [
+                                               'advlist autolink lists link image charmap print preview anchor',
+                                               'searchreplace visualblocks code fullscreen',
+                                               'insertdatetime media table paste code help wordcount'
+                                             ],
+                                             toolbar:
+                                               'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+                                       }"
+                            ></editor>
+                        </ng-container>
 
                         <div class="valid-feedback" *ngIf="isControlValid(item.form)">
                             {{item.title}} was entered correct

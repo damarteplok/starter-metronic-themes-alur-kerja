@@ -22,7 +22,9 @@ export class BaseEditPagesComponent implements OnInit, OnDestroy {
         url?: string,
         metaData?: string,
         placeHolder?: string,
-        name?: string
+        name?: string,
+        readonly?: boolean,
+        mandatory?: boolean
     }[];
     isLoading$;
     formObj: any;

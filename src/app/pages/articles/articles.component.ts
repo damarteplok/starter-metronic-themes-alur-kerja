@@ -30,8 +30,9 @@ export class ArticlesComponent extends BaseCrudPagesComponent {
     modalRef.componentInstance.id = id;
     modalRef.componentInstance.title = 'Articles';
     modalRef.componentInstance.arrFormGroup = [
-      {title: 'Title', form: 'title', type: 'text'},
-      {title: 'Content', form: 'content', type: 'textarea'},
+      {title: 'Title', form: 'title', type: 'text', mandatory: true},
+      {title: 'Content', form: 'content', type: 'textarea', mandatory: true},
+      {title: 'Test Date', form: 'content', type: 'date', mandatory: true},
     ];
     if (type !== 'edit') {
       // Show View

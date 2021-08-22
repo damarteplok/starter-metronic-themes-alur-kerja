@@ -29,6 +29,7 @@ import {DeleteArticlesModalComponent} from './articles/components/delete-article
 import {DeleteCategoryModalComponent} from './category/components/delete-category-modal/delete-category-modal.component';
 import {BaseEditPagesComponent} from './shared/component/crud/base-edit-pages.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     CRUDTableModule,
     SubheaderModule,
     ReactiveFormsModule,
+    EditorModule
   ],
   providers: [
     NgbActiveModal,
