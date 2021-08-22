@@ -6,7 +6,7 @@ import {BaseDeletePagesComponent} from '../../../shared/component/crud/base-dele
 @Component({
     selector: 'app-delete-category-modal',
     templateUrl: '../../../shared/component/crud/delete-crud/delete-crud-modal.component.html',
-    styleUrls: ['../../../shared/component/crud/delete-crud/delete-crud-modal.component.html']
+    styleUrls: ['../../../shared/component/crud/delete-crud/delete-crud-modal.component.scss']
 })
 
 export class DeleteCategoryModalComponent extends BaseDeletePagesComponent{
