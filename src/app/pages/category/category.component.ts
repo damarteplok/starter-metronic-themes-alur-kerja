@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {CategoryService} from './category.service';
-import {BaseCrudPagesComponent} from '../shared/component/crud/base-crud-pages.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditCategoryModalComponent} from './components/edit-category-modal/edit-category-modal.component';
 import {DeleteCategoryModalComponent} from './components/delete-category-modal/delete-category-modal.component';
+import {BaseCrudPagesComponent} from 'angular-alur-kerja-lib';
 
 @Component({
   selector: 'app-category',

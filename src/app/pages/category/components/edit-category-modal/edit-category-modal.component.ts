@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CategoryService} from '../../category.service';
-import {BaseEditPagesComponent} from '../../../shared/component/crud/base-edit-pages.component';
+import {BaseEditPagesComponent} from 'angular-alur-kerja-lib';
 
 @Component({
     selector: 'app-edit-category-modal',
-    templateUrl: '../../../shared/component/crud/edit-crud/edit-crud-modal.component.html',
-    styleUrls: ['../../../shared/component/crud/edit-crud/edit-crud-modal.component.scss'],
+    templateUrl: './edit-category-modal.component.html',
+    styleUrls: [],
 })
 export class EditCategoryModalComponent extends BaseEditPagesComponent{
     EMPTY_OBJ = {

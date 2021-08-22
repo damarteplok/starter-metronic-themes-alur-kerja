@@ -10,6 +10,7 @@ import {EditCategoryModalComponent} from './components/edit-category-modal/edit-
 import {NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CustomAdapter, CustomDateParserFormatter} from '../../_metronic/core';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import {CrudModule} from 'angular-alur-kerja-lib';
 
 @NgModule({
     declarations: [CategoryComponent, DeleteCategoryModalComponent, EditCategoryModalComponent],
@@ -31,6 +32,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
         NgbModule,
         NgbDatepickerModule,
         EditorModule,
+        CrudModule,
     ],
     providers: [
         {

@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {ArticlesService} from './articles.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {BaseCrudPagesComponent} from '../shared/component/crud/base-crud-pages.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DeleteArticlesModalComponent} from './components/delete-articles-modal/delete-articles-modal.component';
 import {EditArticlesModalComponent} from './components/edit-articles-modal/edit-articles-modal.component';
+import {BaseCrudPagesComponent} from 'angular-alur-kerja-lib';
 
 @Component({
   selector: 'app-articles',

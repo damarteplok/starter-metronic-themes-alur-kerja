@@ -23,11 +23,8 @@ import { SubheaderModule } from '../_metronic/partials/layout/subheader/subheade
 import { AsideDynamicComponent } from './_layout/components/aside-dynamic/aside-dynamic.component';
 import { HeaderMenuDynamicComponent } from './_layout/components/header/header-menu-dynamic/header-menu-dynamic.component';
 import {CRUDTableModule} from '../_metronic/shared/crud-table';
-import {BaseCrudPagesComponent} from './shared/component/crud/base-crud-pages.component';
-import {BaseDeletePagesComponent} from './shared/component/crud/base-delete-pages.component';
 import {DeleteArticlesModalComponent} from './articles/components/delete-articles-modal/delete-articles-modal.component';
 import {DeleteCategoryModalComponent} from './category/components/delete-category-modal/delete-category-modal.component';
-import {BaseEditPagesComponent} from './shared/component/crud/base-edit-pages.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 
@@ -45,9 +42,6 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     LanguageSelectorComponent,
     AsideDynamicComponent,
     HeaderMenuDynamicComponent,
-    BaseCrudPagesComponent,
-    BaseDeletePagesComponent,
-    BaseEditPagesComponent,
   ],
   imports: [
     CommonModule,
@@ -61,7 +55,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     CRUDTableModule,
     SubheaderModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
   ],
   providers: [
     NgbActiveModal,

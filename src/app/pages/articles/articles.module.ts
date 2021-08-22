@@ -9,6 +9,7 @@ import {DeleteArticlesModalComponent} from './components/delete-articles-modal/d
 import {NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CustomAdapter, CustomDateParserFormatter} from '../../_metronic/core';
 import {EditArticlesModalComponent} from './components/edit-articles-modal/edit-articles-modal.component';
+import {CrudModule} from 'angular-alur-kerja-lib';
 
 @NgModule({
     declarations: [ArticlesComponent, DeleteArticlesModalComponent, EditArticlesModalComponent],
@@ -26,6 +27,7 @@ import {EditArticlesModalComponent} from './components/edit-articles-modal/edit-
         ReactiveFormsModule,
         NgbModule,
         NgbDatepickerModule,
+        CrudModule,
     ],
     providers: [
         {

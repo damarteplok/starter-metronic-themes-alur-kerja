@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {CategoryService} from '../../category.service';
-import {BaseDeletePagesComponent} from '../../../shared/component/crud/base-delete-pages.component';
+import {BaseDeletePagesComponent} from 'angular-alur-kerja-lib';
 
 @Component({
     selector: 'app-delete-category-modal',
-    templateUrl: '../../../shared/component/crud/delete-crud/delete-crud-modal.component.html',
-    styleUrls: ['../../../shared/component/crud/delete-crud/delete-crud-modal.component.scss']
+    templateUrl: './delete-category-modal.component.html',
+    styleUrls: []
 })
 
 export class DeleteCategoryModalComponent extends BaseDeletePagesComponent{
