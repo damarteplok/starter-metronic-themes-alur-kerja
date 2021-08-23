@@ -5,7 +5,7 @@ import {BaseDeletePagesComponent} from 'angular-alur-kerja-lib';
 
 @Component({
     selector: 'app-delete-articles-modal',
-    templateUrl: './delete-articles-modal.component.html',
+    templateUrl: '../../../_layout/components/menu/modal-delete/modal-delete.component.html',
     styleUrls: []
 })
 

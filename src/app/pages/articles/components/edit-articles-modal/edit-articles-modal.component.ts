@@ -6,7 +6,7 @@ import {BaseEditPagesComponent} from 'angular-alur-kerja-lib';
 
 @Component({
     selector: 'app-edit-articles-modal',
-    templateUrl: './edit-articles-modal.component.html',
+    templateUrl: '../../../_layout/components/menu/modal-edit/modal-edit.component.html',
     styleUrls: [],
 })
 export class EditArticlesModalComponent extends BaseEditPagesComponent{

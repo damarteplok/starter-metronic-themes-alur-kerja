@@ -28,7 +28,7 @@
         "@ng-bootstrap/ng-bootstrap": "^9.1.0",
         "@ngx-translate/core": "^13.0.0",
         "@tinymce/tinymce-angular": "^4.2.4",
-        "angular-alur-kerja-lib": "0.0.8",
+        "angular-alur-kerja-lib": "0.0.9",
         "angular-in-memory-web-api": "^0.11.0",
         "apexcharts": "^3.20.0",
         "bootstrap": "^4.6.0",
