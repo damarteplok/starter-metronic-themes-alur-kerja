@@ -8,6 +8,9 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "crud-component-alur-kerja:crud-component": {
+          "style": "scss"
         }
       },
       "root": "",
@@ -137,6 +140,6 @@
   },
   "defaultProject": "demo1-app",
   "cli": {
-    "analytics": false
+    "analytics": false,
   }
 }

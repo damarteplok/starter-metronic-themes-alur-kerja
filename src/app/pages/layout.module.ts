@@ -23,10 +23,8 @@ import { SubheaderModule } from '../_metronic/partials/layout/subheader/subheade
 import { AsideDynamicComponent } from './_layout/components/aside-dynamic/aside-dynamic.component';
 import { HeaderMenuDynamicComponent } from './_layout/components/header/header-menu-dynamic/header-menu-dynamic.component';
 import {CRUDTableModule} from '../_metronic/shared/crud-table';
-import {DeleteArticlesModalComponent} from './articles/components/delete-articles-modal/delete-articles-modal.component';
-import {DeleteCategoryModalComponent} from './category/components/delete-category-modal/delete-category-modal.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -58,9 +56,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     EditorModule,
   ],
   providers: [
-    NgbActiveModal,
-    DeleteArticlesModalComponent,
-    DeleteCategoryModalComponent
+    NgbActiveModal
   ],
 })
 export class LayoutModule { }
