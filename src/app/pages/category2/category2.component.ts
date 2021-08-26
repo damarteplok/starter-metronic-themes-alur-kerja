@@ -71,7 +71,7 @@ export class Category2Component extends BaseCrudPagesComponent {
         // DEFAULT FILTER BY ID, U CAN ADD MORE
         const filter = {};
         const id = this.filterGroup.get('id').value;
-        if (name) {
+        if (id) {
             filter['id'] = id;
         }
         this.tableService.patchState({ filter });
