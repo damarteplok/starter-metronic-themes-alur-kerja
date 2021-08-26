@@ -13,6 +13,8 @@ import {BaseEditPagesComponent} from 'angular-alur-kerja-lib';
 export class EditCategory2ModalComponent extends BaseEditPagesComponent {
     //Override this empty_obj
     arrNameOfForm: any[] = [];
+    isCollapsed = false;
+
     constructor(
         protected templateService: Category2Service,
         protected fb: FormBuilder,
