@@ -16,26 +16,6 @@
             </div>
         </ng-container>
 
-        <ng-container *ngIf="show">
-            <div>
-                <button type="button"
-                        class="btn btn-primary mb-3"
-                        (click)="isCollapsed = !isCollapsed"
-                        [attr.aria-expanded]="!isCollapsed"
-                        aria-controls="collapseExample">
-                    Show
-                </button>
-                <div [ngbCollapse]="isCollapsed">
-                    <div class="card">
-                        <img src="./assets/media/images/test.jpg" class="card-img-top" alt="example">
-                        <div class="card-body">
-                            test bpmn, still use static url
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-
         <ng-container *ngIf="formObj">
             <form action="#" class="form form-label-right" [formGroup]="formGroup">
                 <div class="form-group row" *ngFor="let item of arrFormGroup">

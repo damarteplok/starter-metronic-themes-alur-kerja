@@ -8,6 +8,24 @@
         </div>
     </div>
     <div class="card-body">
+        <button type="button"
+                class="btn btn-primary mb-3"
+                (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed"
+                aria-controls="collapseExample">
+            Show
+        </button>
+        <div [ngbCollapse]="isCollapsed">
+            <div class="diagram-parent" style="height: 450px">
+                <app-diagram [url]="diagramUrl" (importDone)="handleImported($event)"></app-diagram>
+
+                <div class="import-error" *ngIf="importError">
+                    <strong>Failed to render diagram: </strong>
+                    {{ importError.message }}
+                </div>
+            </div>
+        </div>
+
         <div class="form form-label-right">
 <!--            DEFAULT FILTER BY ID-->
             <div class="form-group row">

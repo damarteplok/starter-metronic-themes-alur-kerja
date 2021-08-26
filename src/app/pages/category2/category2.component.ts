@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DeleteCategory2ModalComponent} from './components/delete-category2-modal/delete-category2-modal.component';
 import {EditCategory2ModalComponent} from './components/edit-category2-modal/edit-category2-modal.component';
 import {BaseCrudPagesComponent} from 'angular-alur-kerja-lib';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-category2',
@@ -12,6 +13,10 @@ import {BaseCrudPagesComponent} from 'angular-alur-kerja-lib';
     styleUrls: ['./category2.component.scss']
 })
 export class Category2Component extends BaseCrudPagesComponent {
+    isCollapsed = false;
+    title = 'bpmn-js-angular';
+    diagramUrl = `${environment.apiUrl}/bpmn/leave/xml`;
+    importError?: Error;
 
     constructor(
         public tableService: Category2Service,
@@ -92,6 +97,24 @@ export class Category2Component extends BaseCrudPagesComponent {
 
     ngOnDestroy() {
         super.ngOnDestroy();
+    }
+
+    handleImported(event) {
+        const {
+            type,
+            error,
+            warnings
+        } = event;
+
+        if (type === 'success') {
+            console.log(`Rendered diagram (%s warnings)`, warnings.length);
+        }
+
+        if (type === 'error') {
+            console.error('Failed to render diagram', error);
+        }
+
+        this.importError = error;
     }
 
 }

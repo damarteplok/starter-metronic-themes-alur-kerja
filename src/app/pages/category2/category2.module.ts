@@ -10,9 +10,10 @@ import {NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerModule, NgbModule} 
 import {CustomAdapter, CustomDateParserFormatter} from '../../_metronic/core';
 import {EditCategory2ModalComponent} from './components/edit-category2-modal/edit-category2-modal.component';
 import {CrudModule} from 'angular-alur-kerja-lib';
+import {DiagramComponent} from '../../_metronic/shared/crud-table/components/diagram/diagram.component';
 
 @NgModule({
-    declarations: [Category2Component, DeleteCategory2ModalComponent, EditCategory2ModalComponent],
+    declarations: [Category2Component, DeleteCategory2ModalComponent, EditCategory2ModalComponent, DiagramComponent],
     entryComponents: [DeleteCategory2ModalComponent, EditCategory2ModalComponent],
     imports: [
         CommonModule,
