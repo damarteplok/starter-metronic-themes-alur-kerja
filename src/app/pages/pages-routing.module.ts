@@ -11,7 +11,7 @@ const routes: Routes = [
       {
         path: 'category',
         loadChildren: () =>
-            import('./category/category.module').then((m) => m.CategoryModule),
+            import('./category2/category2.module').then((m) => m.Category2Module),
       },
       {
         path: 'articles',

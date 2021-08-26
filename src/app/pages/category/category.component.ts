@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditCategoryModalComponent} from './components/edit-category-modal/edit-category-modal.component';
 import {DeleteCategoryModalComponent} from './components/delete-category-modal/delete-category-modal.component';
 import {BaseCrudPagesComponent} from 'angular-alur-kerja-lib';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-category',
@@ -12,11 +13,11 @@ import {BaseCrudPagesComponent} from 'angular-alur-kerja-lib';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent extends BaseCrudPagesComponent {
-
+  API_URL_TEST = `${environment.apiUrl}/crud/category`;
   constructor(
       public tableService: CategoryService,
       protected fb: FormBuilder,
-      private modalService: NgbModal,
+      private modalService: NgbModal
   ) {
     super(tableService, fb);
   }
@@ -29,9 +30,15 @@ export class CategoryComponent extends BaseCrudPagesComponent {
     const modalRef = this.modalService.open(EditCategoryModalComponent, { size: 'xl' });
     modalRef.componentInstance.id = id;
     modalRef.componentInstance.title = 'Category';
-    modalRef.componentInstance.arrFormGroup = [
-      {title: 'Name', form: 'name', type: 'text', mandatory: true}
-    ];
+    const transFormArrForm = this.arrFormGroups.map((el) => {
+      return {
+        title: el.label,
+        form: el.name,
+        type: el.type,
+        mandatory: el.required
+      };
+    });
+    modalRef.componentInstance.arrFormGroup = transFormArrForm;
     if (type !== 'edit') {
       // Show View
       modalRef.componentInstance.show = true;
@@ -69,12 +76,20 @@ export class CategoryComponent extends BaseCrudPagesComponent {
     this.tableService.patchState({ filter });
   }
 
+  getForms() {
+    this.tableService.getFormArr().subscribe(
+        (result: any) => {
+          this.arrFormGroups = [...result.data];
+        },
+    );
+  }
+
   ngOnInit(): void {
     super.ngOnInit();
+    this.getForms();
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
   }
-
 }
