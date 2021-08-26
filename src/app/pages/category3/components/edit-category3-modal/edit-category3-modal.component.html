@@ -1,0 +1,96 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="modal-title h4" id="example-modal-sizes-title-lg">
+            <ng-container *ngIf="formObj">
+                <ng-container *ngIf="formObj.id && !show">Edit</ng-container>
+                <ng-container *ngIf="formObj.id && show">View</ng-container>
+                <ng-container *ngIf="!formObj.id">Create</ng-container>
+                {{title}}
+            </ng-container>
+        </div>
+    </div>
+    <div class="overlay overlay-block cursor-default modal-body" style="min-height: 404px">
+        <ng-container *ngIf="isLoading$ | async">
+            <div class="overlay-layer bg-transparent">
+                <div class="spinner spinner-lg spinner-success"></div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="formObj">
+            <form action="#" class="form form-label-right" [formGroup]="formGroup">
+                <div class="form-group row" *ngFor="let item of arrFormGroup">
+                    <label  class="col-2 col-form-label">{{item.title}} <span *ngIf="item.mandatory" class="text-danger">*</span></label>
+                    <div class="col-lg-6">
+                        <input *ngIf="htmlInputType.includes(item.type ? item.type : 'text')"
+                               type="{{item.type}}"
+                               class="form-control form-control-lg"
+                               name="{{item.name ? item.name :  item.title}}"
+                               placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
+                               autocomplete="off"
+                               [class.is-invalid]="isControlInvalid(item.form)"
+                               [class.is-valid]="isControlValid(item.form)"
+                               [readOnly]="show || item.readonly"
+                               formControlName="{{item.form}}"
+                        />
+
+                        <input *ngIf="!htmlInputType.includes(item.type ? item.type : 'text')"
+                               type="text"
+                               class="form-control form-control-lg"
+                               name="{{item.name ? item.name :  item.title}}"
+                               placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
+                               autocomplete="off"
+                               [class.is-invalid]="isControlInvalid(item.form)"
+                               [class.is-valid]="isControlValid(item.form)"
+                               [readOnly]="show || item.readonly"
+                               formControlName="{{item.form}}"
+                        />
+
+                        <textarea *ngIf="item.type === 'textarea'"
+                                  name="{{item.name ? item.name : item.title}}"
+                                  formControlName="{{item.form}}"
+                                  class="form-control form-control-lg"
+                                  rows="3"
+                                  [class.is-invalid]="isControlInvalid(item.form)"
+                                  [class.is-valid]="isControlValid(item.form)"
+                                  [readOnly]="show"
+                        >
+                            {{item.placeHolder ? item.placeHolder : item.title}}
+                        </textarea>
+
+                        <div class="valid-feedback" *ngIf="isControlValid(item.form)">
+                            {{item.title}} was entered correct
+                        </div>
+                        <div class="invalid-feedback" *ngIf="controlHasError('required', item.form)">
+                            {{item.title}} is required
+                        </div>
+                        <div class="invalid-feedback" *ngIf="controlHasError('minlength', item.form)">
+                            {{item.title}} minimun length not achieved
+                        </div>
+                        <div class="invalid-feedback" *ngIf="controlHasError('maxlength', item.form)">
+                            {{item.title}} maximun length passed
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+    <div class="modal-footer" *ngIf="!show">
+        <button
+                type="button"
+                class="btn btn-light btn-elevate mr-2"
+                (click)="modal.dismiss()"
+        >
+            Cancel
+        </button>
+        <ng-container *ngIf="formObj">
+            <button
+                    type="submit"
+                    class="btn btn-primary btn-elevate"
+                    (click)="save()"
+                    [disabled]="formGroup.invalid"
+            >
+                Save
+            </button>
+        </ng-container>
+    </div>
+</div>

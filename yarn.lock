@@ -2986,10 +2986,10 @@
     "shebang-command" "^1.2.0"
     "which" "^1.2.9"
 
-"crud-component-alur-kerja@0.0.4":
-  "integrity" "sha512-NWeR7+6M6LZR1hlP1Dp00RY7cZ2rkpi0LJ7g8/VeU0Vc/7RZsKV4Sapazztcn4kNB+NgcdAN6ns0wnqLbLp3JA=="
-  "resolved" "https://registry.npmjs.org/crud-component-alur-kerja/-/crud-component-alur-kerja-0.0.4.tgz"
-  "version" "0.0.4"
+"crud-component-alur-kerja@0.0.5":
+  "integrity" "sha512-mI5Zj7wIQDOmXqkkxsc5qKvtTdIq4zD4rLarNNZsgTDEUmA8E9rf1RNYVcm3tjr0S8KOT7+eTf0CD53RsAP70w=="
+  "resolved" "https://registry.npmjs.org/crud-component-alur-kerja/-/crud-component-alur-kerja-0.0.5.tgz"
+  "version" "0.0.5"
   dependencies:
     "@angular-devkit/core" "^12.2.2"
     "@angular-devkit/schematics" "^12.2.2"
