@@ -8,7 +8,7 @@ build:
   before_script:
     - npm install
   script:
-    - node --max_old_space_size=8192 --no-warnings 'node_modules/@angular/cli/bin/ng' build
+    - node --max_old_space_size=8192 --no-warnings 'node_modules/@angular/cli/bin/ng' build --configuration production
   artifacts:
     expire_in: 1 day
     paths:
