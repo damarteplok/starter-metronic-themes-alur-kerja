@@ -14,7 +14,8 @@ import {
 import { HttpClient } from '@angular/common/http';
 import {map, switchMap, tap} from 'rxjs/operators';
 
-import * as BpmnJS from 'bpmn-js/dist/bpmn-modeler.production.min.js';
+import * as BpmnJS from 'bpmn-js/dist/bpmn-viewer.production.min.js';
+import * as BpmnViewer from 'bpmn-js/dist/bpmn-viewer.production.min.js';
 
 import { from, Observable, Subscription } from 'rxjs';
 

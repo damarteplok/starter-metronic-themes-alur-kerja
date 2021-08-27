@@ -58,5 +58,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   providers: [
     NgbActiveModal
   ],
+  exports: [
+  ]
 })
 export class LayoutModule { }
