@@ -63,10 +63,16 @@ export class Category2Component extends BaseCrudPagesComponent {
     filterForm() {
         // DEFAULT FILTER FORM ID, U CAN ADD MORE
         this.filterGroup = this.fb.group({
-            id: ['']
+            id: [''],
+            name: ['']
         });
         this.subscriptions.push(
             this.filterGroup.controls.id.valueChanges.subscribe(() =>
+                this.filter()
+            )
+        );
+        this.subscriptions.push(
+            this.filterGroup.controls.name.valueChanges.subscribe(() =>
                 this.filter()
             )
         );
@@ -78,6 +84,10 @@ export class Category2Component extends BaseCrudPagesComponent {
         const id = this.filterGroup.get('id').value;
         if (id) {
             filter['id'] = id;
+        }
+        const name = this.filterGroup.get('name').value;
+        if (name) {
+            filter['name'] = name;
         }
         this.tableService.patchState({ filter });
     }
