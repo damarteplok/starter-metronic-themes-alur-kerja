@@ -19,6 +19,11 @@ const routes: Routes = [
             import('./articles3/articles3.module').then((m) => m.Articles3Module),
       },
       {
+        path: 'jatahcuti',
+        loadChildren: () =>
+            import('./jatahcuti2/jatahcuti2.module').then((m) => m.Jatahcuti2Module),
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),

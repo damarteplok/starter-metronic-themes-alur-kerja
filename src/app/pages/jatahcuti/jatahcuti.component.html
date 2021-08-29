@@ -1,0 +1,96 @@
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">Jatahcuti list</h3>
+        </div>
+        <div class="card-toolbar">
+            <button type="button" class="btn btn-primary" (click)="create()">New Jatahcuti</button>
+        </div>
+    </div>
+    <div class="card-body">
+<!--        <button type="button"-->
+<!--                class="btn btn-primary mb-3"-->
+<!--                (click)="isCollapsed = !isCollapsed"-->
+<!--                [attr.aria-expanded]="!isCollapsed"-->
+<!--                aria-controls="collapseExample">-->
+<!--            Show-->
+<!--        </button>-->
+<!--        <div [ngbCollapse]="isCollapsed">-->
+<!--            <div class="diagram-parent" style="height: 450px">-->
+<!--                <app-diagram [url]="diagramUrl" (importDone)="handleImported($event)"></app-diagram>-->
+
+<!--                <div class="import-error" *ngIf="importError">-->
+<!--                    <strong>Failed to render diagram: </strong>-->
+<!--                    {{ importError.message }}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form form-label-right">
+<!--            DEFAULT FILTER BY ID-->
+            <div class="form-group row">
+                <div class="col-lg-3">
+                    <div class="row" [formGroup]="filterGroup">
+                        <div class="col-lg-12">
+                            <input type="text"
+                                   class="form-control"
+                                   name="searchText"
+                                   placeholder="Search Id"
+                                   formControlName="id"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive angular-bootstrap-table">
+<!--            DEFAULT TABLE JUST ID-->
+            <table class="table table-head-custom table-vertical-center overflow-hidden">
+                <thead>
+                <th>
+                    ID
+                    <app-sort-icon column="id" [activeColumn]="sorting.column" [activeDirection]="sorting.direction"
+                                   (sort)="sort($event)"></app-sort-icon>
+                </th>
+                <th>
+                    Username
+                </th>
+                <th>ACTIONS</th>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of tableService.items$ | async">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.username }}</td>
+                    <td>
+                        <!-- view -->
+                        <a title="View" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                           (click)="edit(item.id, 'view')">
+                            <span [inlineSVG]="'./assets/media/svg/icons/General/Visible.svg'" cacheSVG="true"
+                                  class="svg-icon svg-icon-md svg-icon-primary">
+                            </span>
+                        </a>
+                        <!-- edit -->
+                        <a title="Edit" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                           (click)="edit(item.id)">
+                            <span [inlineSVG]="'./assets/media/svg/icons/Communication/Write.svg'" cacheSVG="true"
+                                  class="svg-icon svg-icon-md svg-icon-primary">
+                            </span>
+                        </a>
+                        <a title="Delete"
+                           class="btn btn-icon btn-light btn-hover-danger btn-sm"
+                           (click)="delete(item.id)"
+                        >
+                            <span [inlineSVG]="'./assets/media/svg/icons/General/Trash.svg'" cacheSVG="true"
+                                  class="svg-icon svg-icon-md svg-icon-danger">
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <app-paginator class="d-flex justify-content-between align-items-center flex-wrap"
+                       [paginator]="paginator"
+                       [isLoading]="isLoading" (paginate)="paginate($event)"
+        ></app-paginator>
+    </div>
+</div>
