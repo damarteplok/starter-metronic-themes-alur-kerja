@@ -31,5 +31,11 @@ export const DynamicHeaderMenuConfig = {
       alignment: 'left',
       page: '/jatahcuti',
     },
+    {
+      title: 'Leave',
+      root: true,
+      alignment: 'left',
+      page: '/leave',
+    },
   ]
 };

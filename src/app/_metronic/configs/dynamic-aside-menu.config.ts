@@ -31,6 +31,13 @@ export const DynamicAsideMenuConfig = {
       svg: './assets/media/svg/icons/Home/Library.svg'
     },
     {
+      title: 'Leave',
+      root: true,
+      icon: 'flaticon2-expand',
+      page: '/leave',
+      svg: './assets/media/svg/icons/Home/Library.svg'
+    },
+    {
       title: 'Layout Builder',
       root: true,
       icon: 'flaticon2-expand',
