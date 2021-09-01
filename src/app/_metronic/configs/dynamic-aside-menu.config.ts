@@ -38,6 +38,13 @@ export const DynamicAsideMenuConfig = {
       svg: './assets/media/svg/icons/Home/Library.svg'
     },
     {
+      title: 'Mainan',
+      root: true,
+      icon: 'flaticon2-expand',
+      page: '/mainan',
+      svg: './assets/media/svg/icons/Home/Library.svg'
+    },
+    {
       title: 'Layout Builder',
       root: true,
       icon: 'flaticon2-expand',

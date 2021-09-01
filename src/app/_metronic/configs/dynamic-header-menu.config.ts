@@ -37,5 +37,11 @@ export const DynamicHeaderMenuConfig = {
       alignment: 'left',
       page: '/leave',
     },
+    {
+      title: 'Mainan',
+      root: true,
+      alignment: 'left',
+      page: '/mainan',
+    },
   ]
 };

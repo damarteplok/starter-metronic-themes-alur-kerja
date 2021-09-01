@@ -34,7 +34,7 @@
         "apexcharts": "^3.20.0",
         "bootstrap": "^4.6.0",
         "clipboard": "^2.0.6",
-        "crud-component-alur-kerja": "0.0.7",
+        "crud-component-alur-kerja": "0.0.10",
         "highlight.js": "^10.4.0",
         "highlightjs-line-numbers.js": "^2.8.0",
         "jquery": "^3.6.0",

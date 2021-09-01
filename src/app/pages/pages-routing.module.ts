@@ -29,6 +29,11 @@ const routes: Routes = [
             import('./leave/leave.module').then((m) => m.LeaveModule),
       },
       {
+        path: 'mainan',
+        loadChildren: () =>
+            import('./mainan/mainan.module').then((m) => m.MainanModule),
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
@@ -40,7 +45,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/category',
+        redirectTo: '/leave',
         pathMatch: 'full',
       },
       {
