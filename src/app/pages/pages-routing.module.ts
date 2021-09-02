@@ -34,6 +34,11 @@ const routes: Routes = [
             import('./mainan/mainan.module').then((m) => m.MainanModule),
       },
       {
+        path: 'reimburse',
+        loadChildren: () =>
+            import('./reimburse/reimburse.module').then((m) => m.ReimburseModule),
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
