@@ -14,7 +14,7 @@ import {BaseCrudBpmnPagesComponent} from 'angular-alur-kerja-lib';
 })
 export class LeaveComponent extends BaseCrudBpmnPagesComponent {
     //INI yang di ganti bpmn component
-    diagramUrl = `${environment.apiUrl}/bpmn/leave/xml`;
+    diagramUrl = `${environment.apiUrl}/bpmn/leave`;
 
     constructor(
         public tableService: LeaveService,

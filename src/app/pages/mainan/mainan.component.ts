@@ -13,7 +13,7 @@ import {environment} from '../../../environments/environment';
 })
 export class MainanComponent extends BaseCrudBpmnPagesComponent {
     //INI yang di ganti bpmn component
-    diagramUrl = `${environment.apiUrl}/bpmn/mainan/xml`;
+    diagramUrl = `${environment.apiUrl}/bpmn/mainan`;
 
     constructor(
         public tableService: MainanService,

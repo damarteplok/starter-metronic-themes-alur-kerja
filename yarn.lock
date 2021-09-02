@@ -1634,10 +1634,10 @@
   "resolved" "https://registry.npmjs.org/alphanum-sort/-/alphanum-sort-1.0.2.tgz"
   "version" "1.0.2"
 
-"angular-alur-kerja-lib@0.0.23":
-  "integrity" "sha512-+xAleM2NgVX8X58Gxwe5e01ma87Wde1waxR1n4+CS0U5VuQ3fTda/bYcG2nEvSOO/MnRoNzIK58v6EzlyYvx1g=="
-  "resolved" "https://registry.npmjs.org/angular-alur-kerja-lib/-/angular-alur-kerja-lib-0.0.23.tgz"
-  "version" "0.0.23"
+"angular-alur-kerja-lib@0.0.26":
+  "integrity" "sha512-rlVP4km6ZOhh4nnyV+xgzObczpRS6YndhLkxUGmZUKWUlo722iML+ER6MqaePwPetDKzbxkYgyvaiaFbcRiiIQ=="
+  "resolved" "https://registry.npmjs.org/angular-alur-kerja-lib/-/angular-alur-kerja-lib-0.0.26.tgz"
+  "version" "0.0.26"
   dependencies:
     "bpmn-js" "^8.7.2"
     "tslib" "^2.0.0"
@@ -2999,10 +2999,10 @@
     "shebang-command" "^1.2.0"
     "which" "^1.2.9"
 
-"crud-component-alur-kerja@0.0.9":
-  "integrity" "sha512-8M4b10jOZc3h/ey0Lk5Bzhz/IitEI//i5rqiYxfuxVWphGaBc+m2kEGWuCOLEsSSJKHVIydMobRRu9smwndZ2w=="
-  "resolved" "https://registry.npmjs.org/crud-component-alur-kerja/-/crud-component-alur-kerja-0.0.9.tgz"
-  "version" "0.0.9"
+"crud-component-alur-kerja@0.0.12":
+  "integrity" "sha512-5zyQ78TbLCFAK8JGGV+5OrhrWZm1BzIhDt26N3ALxlw1BHYxeQSk1q1z7A48z4qVsVmWZ3Jnu4TyY/JD5xhVYQ=="
+  "resolved" "https://registry.npmjs.org/crud-component-alur-kerja/-/crud-component-alur-kerja-0.0.12.tgz"
+  "version" "0.0.12"
   dependencies:
     "@angular-devkit/core" "^12.2.2"
     "@angular-devkit/schematics" "^12.2.2"

@@ -26,7 +26,7 @@
         </button>
         <div [ngbCollapse]="isCollapsed">
             <div class="diagram-parent" style="height: 450px">
-                <app-diagram [url]="diagramUrl" (importDone)="handleImported($event)"></app-diagram>
+                <app-diagram-tes [url]="diagramUrl" (importDone)="handleImported($event)"></app-diagram-tes>
 
                 <div class="import-error" *ngIf="importError">
                     <strong>Failed to render diagram: </strong>

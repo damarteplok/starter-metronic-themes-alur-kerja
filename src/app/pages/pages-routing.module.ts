@@ -45,7 +45,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/leave',
+        redirectTo: '/mainan',
         pathMatch: 'full',
       },
       {
