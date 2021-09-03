@@ -18,6 +18,7 @@ export class EditMainanModalComponent extends BaseBpmnEditPagesComponent {
     importError?: Error;
 
     arrNameOfForm: any[] = [];
+    arrNameOfVar: any[] = [];
 
     constructor(
         protected templateService: MainanService,
@@ -34,44 +35,62 @@ export class EditMainanModalComponent extends BaseBpmnEditPagesComponent {
         this.arrNameOfForm = this.arrFormGroup.map((el) => {
             return el.form;
         });
+        this.arrNameOfVar = this.arrParamsGroup.map((el) => {
+            return el.form;
+        });
+
         for (const key of this.arrNameOfForm) {
             this.EMPTY_OBJ[key] = key;
         }
-        let objFormGroup = new Object();
+        for (const key of this.arrNameOfVar) {
+            this.EMPTY_OBJ[key] = key;
+        }
+
+        const objFormGroup = new Object();
         this.arrNameOfForm.forEach((el) => {
             objFormGroup[el] = [this.formObj.model[el], Validators.compose([Validators.required])];
+        });
+        this.arrNameOfVar.forEach((el) => {
+            objFormGroup[el] = ['', Validators.compose([Validators.required])];
         });
         this.formGroup = this.fb.group(objFormGroup);
     }
 
     prepareFormData() {
     //    OVERRIDE THIS
-        const formData = this.formGroup.value;
-        return {
-            name: formData.name,
-            reason: formData.reason,
-        };
     }
 
     prepareFormEdit() {
     //    OVERRIDE THIS
+        const formData = this.formGroup.value;
+        let obj = new Object();
+        this.arrNameOfForm.forEach((el) => {
+            obj[el] = formData[el];
+        });
+        return obj;
     }
 
-    handleImported(event) {
-        const {
-            type,
-            error,
-            warnings
-        } = event;
-
-        if (type === 'success') {
-            console.log(`Rendered diagram (%s warnings)`, warnings.length);
+    prepareParamsEdit() {
+        const formParams = this.formGroup.value;
+        const arrTemp = [];
+        this.arrNameOfVar.forEach((el) => {
+            arrTemp.push({
+                name: el,
+                value: formParams[el]
+            });
+        });
+        //decision hard code dlu
+        arrTemp.push({
+            name: 'decision',
+            value: 'ok'
+        });
+        //if have arrNameOfVar
+        if (this.arrNameOfForm.length) {
+            arrTemp.push({
+                name: 'withVariable',
+                value: '1'
+            });
         }
-
-        if (type === 'error') {
-            console.error('Failed to render diagram', error);
-        }
-
-        this.importError = error;
+        return arrTemp;
     }
 }

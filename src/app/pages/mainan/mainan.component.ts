@@ -28,34 +28,65 @@ export class MainanComponent extends BaseCrudBpmnPagesComponent {
     }
 
     edit(id: number, type: string = 'edit', typeTask = null) {
-        const modalRef = this.modalService.open(EditMainanModalComponent, { size: 'xl' });
-        modalRef.componentInstance.id = id;
-        modalRef.componentInstance.title = 'Mainan';
-        modalRef.componentInstance.type = typeTask;
         // OVERRIDE this transFormArrForm with your array object, if u want to custom, not from BE
-        const transFormArrForm = [
-            {
-                title: 'Name',
-                form: 'name',
-                type: 'text',
-                mandatory: true
-            },
-            {
-                title: 'Reason',
-                form: 'reason',
-                type: 'text',
-                mandatory: true
-            }
-        ];
-        modalRef.componentInstance.arrFormGroup = transFormArrForm;
-        if (type !== 'edit') {
-            // Show View
-            modalRef.componentInstance.show = true;
-        }
-        modalRef.result.then(() =>
-                this.tableService.fetchBpmn(),
-            () => { }
-        );
+        let transFormArrForm = [];
+        let transFormArrVar = [];
+        this.tableService.getSpec('dto', typeTask).subscribe( (res: any) => {
+            const dataTemp = res.data.map((item) => {
+                return {
+                    title: item.label,
+                    form: item.name,
+                    type: 'text',
+                    mandatory: item.required
+                };
+            });
+            this.arrDto = [...dataTemp];
+            transFormArrForm = this.arrDto.map((el) => {
+                return {
+                    title: el.title,
+                    form: el.form,
+                    type: el.type,
+                    mandatory: el.mandatory
+                };
+            });
+            this.tableService.getSpec('variable', typeTask).subscribe((res2: any) => {
+                const dataTemp2 = res2.data.map((item) => {
+                    return {
+                        title: item.label,
+                        form: item.name,
+                        type: 'text',
+                        mandatory: item.required
+                    };
+                });
+                this.arrVar = [...dataTemp2];
+                transFormArrVar = this.arrVar.map((el) => {
+                    return {
+                        title: el.title,
+                        form: el.form,
+                        type: el.type,
+                        mandatory: el.mandatory
+                    };
+                });
+                const modalRef = this.modalService.open(EditMainanModalComponent, { size: 'xl' });
+                modalRef.componentInstance.id = id;
+                modalRef.componentInstance.title = 'Mainan';
+                modalRef.componentInstance.type = typeTask;
+                modalRef.componentInstance.arrFormGroup = transFormArrForm;
+                modalRef.componentInstance.arrform = '1';
+                modalRef.componentInstance.arrParamsGroup = transFormArrVar;
+                modalRef.componentInstance.arrvar = '1';
+
+                if (type !== 'edit') {
+                    // Show View
+                    modalRef.componentInstance.show = true;
+                }
+                modalRef.result.then(() =>
+                        this.tableService.fetchBpmn(),
+                    () => { }
+                );
+            });
+        });
+
     }
 
     filterForm() {
@@ -80,14 +111,6 @@ export class MainanComponent extends BaseCrudBpmnPagesComponent {
         this.tableService.patchStateBpmn({ filter });
     }
 
-    getForms() {
-        this.tableService.getFormArr().subscribe(
-            (result: any) => {
-                this.arrFormGroups = [...result.data];
-            },
-        );
-    }
-
     ngOnInit(): void {
         super.ngOnInit();
     }
@@ -95,5 +118,4 @@ export class MainanComponent extends BaseCrudBpmnPagesComponent {
     ngOnDestroy() {
         super.ngOnDestroy();
     }
-
 }

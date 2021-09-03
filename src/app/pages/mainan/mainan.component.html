@@ -77,7 +77,7 @@
                     <td>{{ item.createdDate | date: 'dd-MMM-yyyy' }}</td>
                     <td>
                         <a title="View" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-                           (click)="edit(item.id, 'view')">
+                           (click)="edit(item.id, 'view', item?.typeTask)">
                             <span [inlineSVG]="'./assets/media/svg/icons/General/Visible.svg'" cacheSVG="true"
                                   class="svg-icon svg-icon-md svg-icon-primary">
                             </span>
