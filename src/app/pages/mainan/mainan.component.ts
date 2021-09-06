@@ -32,12 +32,14 @@ export class MainanComponent extends BaseCrudBpmnPagesComponent {
     edit(id: number, type: string = 'edit', typeTask = null) {
         let transFormArrForm = [];
         let transFormArrVar = [];
-        let transFormArrDecision = {};
+        let transFormArrDecision = [];
         for (const key in this.allSpec) {
             if (key === typeTask) {
                 const obj = this.allSpec[key];
                 if (obj.hasOwnProperty('decision')) {
-                    transFormArrDecision = obj.decision;
+                    if (obj.decision.hasOwnProperty('exclusive')) {
+                        transFormArrDecision = obj.decision.exclusive;
+                    }
                 }
                 if (obj.hasOwnProperty('variable')) {
                     transFormArrVar = obj.variable.map((el) => {
@@ -69,6 +71,7 @@ export class MainanComponent extends BaseCrudBpmnPagesComponent {
         modalRef.componentInstance.arrform = '1';
         modalRef.componentInstance.arrParamsGroup = transFormArrVar;
         modalRef.componentInstance.arrvar = '1';
+        modalRef.componentInstance.arrDecision = transFormArrDecision;
 
         if (type !== 'edit') {
             // Show View

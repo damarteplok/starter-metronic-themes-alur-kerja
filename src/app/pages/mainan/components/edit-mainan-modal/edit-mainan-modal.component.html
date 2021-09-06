@@ -149,6 +149,27 @@
                             </ng-container>
                         </div>
                     </div>
+                    <div class="row" *ngIf="arrDecision.length">
+                        <div class="col-12">
+                            <h3>Decision</h3>
+                            <ng-container>
+                                <div class="form-group row">
+                                    <label  class="col-2 col-form-label">Decision <span *ngIf="true" class="text-danger">*</span></label>
+                                    <div class="col-lg-6">
+                                        <input
+                                               type="text"
+                                               class="form-control form-control-lg"
+                                               name="decision"
+                                               placeholder="Decision"
+                                               autocomplete="off"
+                                               [readOnly]="show"
+                                               formControlName="decision"
+                                        />
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
                 </form>
             </ng-container>
         </ng-container>
