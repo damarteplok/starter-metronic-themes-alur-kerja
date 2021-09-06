@@ -10,7 +10,7 @@
             <h3 class="card-label">Mainan list</h3>
         </div>
         <div class="card-toolbar">
-            <button type="button" class="btn btn-primary" (click)="apply()" *ngIf="testEmitter$ | async" [disabled]="loadingStart">
+            <button type="button" class="btn btn-primary" (click)="create()" *ngIf="testEmitter$ | async" [disabled]="loadingStart">
                 <span *ngIf="loadingStart" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 Start Mainan
             </button>
