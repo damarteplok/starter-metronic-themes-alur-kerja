@@ -24,19 +24,9 @@ const routes: Routes = [
             import('./jatahcuti2/jatahcuti2.module').then((m) => m.Jatahcuti2Module),
       },
       {
-        path: 'leave',
-        loadChildren: () =>
-            import('./leave/leave.module').then((m) => m.LeaveModule),
-      },
-      {
         path: 'mainan',
         loadChildren: () =>
             import('./mainan/mainan.module').then((m) => m.MainanModule),
-      },
-      {
-        path: 'reimburse',
-        loadChildren: () =>
-            import('./reimburse/reimburse.module').then((m) => m.ReimburseModule),
       },
       {
         path: 'dashboard',
