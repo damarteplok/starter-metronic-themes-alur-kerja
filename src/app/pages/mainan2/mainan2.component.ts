@@ -29,56 +29,7 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
         this.edit(undefined, 'edit', 'init');
     }
 
-    edit(id: number, type: string = 'edit', typeTask = null) {
-        let transFormArrForm = [];
-        let transFormArrVar = [];
-        let transFormArrDecision = [];
-        let typeDecision = 'radio';
-        console.log(this.allSpec);
-        for (const key in this.allSpec) {
-            if (key === typeTask) {
-                const obj = this.allSpec[key];
-                if (obj.hasOwnProperty('decision')) {
-                    if (obj.decision.hasOwnProperty('exclusive')) {
-                        transFormArrDecision = obj.decision.exclusive;
-                        typeDecision = 'radio';
-                    }
-                    if (obj.decision.hasOwnProperty('inclusive')) {
-                        transFormArrDecision = obj.decision.inclusive;
-                        typeDecision = 'checkbox';
-                    }
-                }
-                if (obj.hasOwnProperty('variable')) {
-                    transFormArrVar = obj.variable.map((el) => {
-                        return {
-                            title: el.label,
-                            form: el.name,
-                            type: 'text',
-                            mandatory: el.required
-                        };
-                    });
-                }
-                if (obj.hasOwnProperty('dto')) {
-                    transFormArrForm = obj.dto.map((el) => {
-                        const typeTemp = el.type == 'String' || el.type == 'string' ? 'text' : el.type ? el.type : 'text';
-                        if (typeTemp == 'radio') {
-                            let tempJson = el.metadata.jsonValues;
-                            el.metadata = {
-                                ...el.metadata,
-                                jsonValues: typeof tempJson === 'string' ? JSON.parse(tempJson) : tempJson
-                            };
-                        }
-                        return {
-                            title: el.label,
-                            form: el.name,
-                            type: typeTemp ? typeTemp.toLowerCase() : typeTemp,
-                            mandatory: el.required,
-                            metaData: el.metadata
-                        };
-                    });
-                }
-            }
-        }
+    editComponentShow(id, type, typeTask, transFormArrForm, transFormArrVar, transFormArrDecision, typeDecision) {
         const modalRef = this.modalService.open(EditMainan2ModalComponent, { size: 'xl' });
         modalRef.componentInstance.id = id;
         modalRef.componentInstance.title = 'Mainan2';

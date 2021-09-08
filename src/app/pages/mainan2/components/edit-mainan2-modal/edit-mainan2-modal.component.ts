@@ -11,26 +11,10 @@ import {BaseBpmnEditPagesComponent} from 'angular-alur-kerja-lib';
 })
 
 export class EditMainan2ModalComponent extends BaseBpmnEditPagesComponent {
-    applyHide = false;
     EMPTY_OBJ = {
         model: {},
         logs: []
     };
-    listInput = [
-        'text',
-        'number',
-        'email',
-    ];
-    filtered2 = [
-        {
-            id: 'asdasd',
-            name: 'asdasd'
-        },
-        {
-            id: 'asdasd',
-            name: 'asdasd'
-        }
-    ]
 
     constructor(
         protected templateService: Mainan2Service,

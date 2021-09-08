@@ -1634,10 +1634,10 @@
   "resolved" "https://registry.npmjs.org/alphanum-sort/-/alphanum-sort-1.0.2.tgz"
   "version" "1.0.2"
 
-"angular-alur-kerja-lib@0.0.65":
-  "integrity" "sha512-OMkNvo6OLlejoHbBTs/LtxVWdJaLyyaXcm2kyXZcYNyJpGmC5uh4NvV3+UZf1qcahlA5kayWDF1xSGuj4kvz2w=="
-  "resolved" "https://registry.npmjs.org/angular-alur-kerja-lib/-/angular-alur-kerja-lib-0.0.65.tgz"
-  "version" "0.0.65"
+"angular-alur-kerja-lib@0.0.84":
+  "integrity" "sha512-T6MUKVCSCo49VWFWN6gxX6iC6ORHQ53A3PhEiuMIUDQrKsoLW9O79ouS03+ygQUZGqda9Sd7FO/w3TiFmkhTlA=="
+  "resolved" "https://registry.npmjs.org/angular-alur-kerja-lib/-/angular-alur-kerja-lib-0.0.84.tgz"
+  "version" "0.0.84"
   dependencies:
     "bpmn-js" "^8.7.2"
     "tslib" "^2.0.0"
