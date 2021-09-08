@@ -33,8 +33,8 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
         let transFormArrForm = [];
         let transFormArrVar = [];
         let transFormArrDecision = [];
-        console.log(this.allSpec, 'this all spec');
         let typeDecision = 'radio';
+        console.log(this.allSpec);
         for (const key in this.allSpec) {
             if (key === typeTask) {
                 const obj = this.allSpec[key];
@@ -42,7 +42,6 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
                     if (obj.decision.hasOwnProperty('exclusive')) {
                         transFormArrDecision = obj.decision.exclusive;
                         typeDecision = 'radio';
-                        console.log(transFormArrDecision);
                     }
                     if (obj.decision.hasOwnProperty('inclusive')) {
                         transFormArrDecision = obj.decision.inclusive;
@@ -66,8 +65,8 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
                             let tempJson = el.metadata.jsonValues;
                             el.metadata = {
                                 ...el.metadata,
-                                jsonValues: JSON.parse(tempJson)
-                            }
+                                jsonValues: typeof tempJson === 'string' ? JSON.parse(tempJson) : tempJson
+                            };
                         }
                         return {
                             title: el.label,
