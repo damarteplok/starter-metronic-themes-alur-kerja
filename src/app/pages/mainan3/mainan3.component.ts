@@ -1,24 +1,24 @@
 import {Component} from '@angular/core';
-import {Mainan2Service} from './mainan2.service';
+import {Mainan3Service} from './mainan3.service';
 import {FormBuilder} from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {EditMainan2ModalComponent} from './components/edit-mainan2-modal/edit-mainan2-modal.component';
+import {EditMainan3ModalComponent} from './components/edit-mainan3-modal/edit-mainan3-modal.component';
 import {BaseCrudBpmnPagesComponent} from 'angular-alur-kerja-lib';
 import {environment} from '../../../environments/environment';
 
 @Component({
-    selector: 'app-mainan2',
-    templateUrl: './mainan2.component.html',
-    styleUrls: ['./mainan2.component.scss']
+    selector: 'app-mainan3',
+    templateUrl: './mainan3.component.html',
+    styleUrls: ['./mainan3.component.scss']
 })
-export class Mainan2Component extends BaseCrudBpmnPagesComponent {
+export class Mainan3Component extends BaseCrudBpmnPagesComponent {
     allSpec = {};
 
     //INI yang di ganti bpmn component
-    diagramUrl = `${environment.apiUrl}/bpmn/mainan`;
+    diagramUrl = `${environment.apiUrl}/bpmn/mainan3`;
 
     constructor(
-        public tableService: Mainan2Service,
+        public tableService: Mainan3Service,
         protected fb: FormBuilder,
         private modalService: NgbModal,
     ) {
@@ -33,20 +33,12 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
         let transFormArrForm = [];
         let transFormArrVar = [];
         let transFormArrDecision = [];
-        console.log(this.allSpec, 'this all spec');
-        let typeDecision = 'radio';
         for (const key in this.allSpec) {
             if (key === typeTask) {
                 const obj = this.allSpec[key];
                 if (obj.hasOwnProperty('decision')) {
                     if (obj.decision.hasOwnProperty('exclusive')) {
                         transFormArrDecision = obj.decision.exclusive;
-                        typeDecision = 'radio';
-                        console.log(transFormArrDecision);
-                    }
-                    if (obj.decision.hasOwnProperty('inclusive')) {
-                        transFormArrDecision = obj.decision.inclusive;
-                        typeDecision = 'checkbox';
                     }
                 }
                 if (obj.hasOwnProperty('variable')) {
@@ -61,35 +53,25 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
                 }
                 if (obj.hasOwnProperty('dto')) {
                     transFormArrForm = obj.dto.map((el) => {
-                        const typeTemp = el.type == 'String' || el.type == 'string' ? 'text' : el.type ? el.type : 'text';
-                        if (typeTemp == 'radio') {
-                            let tempJson = el.metadata.jsonValues;
-                            el.metadata = {
-                                ...el.metadata,
-                                jsonValues: JSON.parse(tempJson)
-                            }
-                        }
                         return {
                             title: el.label,
                             form: el.name,
-                            type: typeTemp ? typeTemp.toLowerCase() : typeTemp,
-                            mandatory: el.required,
-                            metaData: el.metadata
+                            type: 'text',
+                            mandatory: el.required
                         };
                     });
                 }
             }
         }
-        const modalRef = this.modalService.open(EditMainan2ModalComponent, { size: 'xl' });
+        const modalRef = this.modalService.open(EditMainan3ModalComponent, { size: 'xl' });
         modalRef.componentInstance.id = id;
-        modalRef.componentInstance.title = 'Mainan2';
+        modalRef.componentInstance.title = 'Mainan3';
         modalRef.componentInstance.type = typeTask;
         modalRef.componentInstance.arrFormGroup = transFormArrForm;
         modalRef.componentInstance.arrform = '1';
         modalRef.componentInstance.arrParamsGroup = transFormArrVar;
         modalRef.componentInstance.arrvar = '1';
         modalRef.componentInstance.arrDecision = transFormArrDecision;
-        modalRef.componentInstance.typeDecision = typeDecision;
 
         if (type !== 'edit') {
             // Show View

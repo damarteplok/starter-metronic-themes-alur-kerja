@@ -16,6 +16,21 @@ export class EditMainan2ModalComponent extends BaseBpmnEditPagesComponent {
         model: {},
         logs: []
     };
+    listInput = [
+        'text',
+        'number',
+        'email',
+    ];
+    filtered2 = [
+        {
+            id: 'asdasd',
+            name: 'asdasd'
+        },
+        {
+            id: 'asdasd',
+            name: 'asdasd'
+        }
+    ]
 
     constructor(
         protected templateService: Mainan2Service,

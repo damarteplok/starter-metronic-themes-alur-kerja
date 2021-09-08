@@ -25,7 +25,7 @@ import {CrudModule, CRUDTableModule} from 'angular-alur-kerja-lib';
         ReactiveFormsModule,
         NgbModule,
         NgbDatepickerModule,
-        CrudModule,
+        CrudModule
     ],
     providers: [
         {

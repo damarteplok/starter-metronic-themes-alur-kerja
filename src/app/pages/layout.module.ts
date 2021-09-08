@@ -53,7 +53,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     CRUDTableModule,
     SubheaderModule,
     ReactiveFormsModule,
-    EditorModule,
+    EditorModule
   ],
   providers: [
     NgbActiveModal

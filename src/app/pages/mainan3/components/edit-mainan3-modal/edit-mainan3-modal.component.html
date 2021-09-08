@@ -70,7 +70,6 @@
             </div>
             <ng-container>
                 <form action="#" class="form form-label-right" [formGroup]="formGroup">
-
                     <div class="row">
                         <div class="col-12">
                             <h3>Variables</h3>
@@ -78,35 +77,32 @@
                                 <div class="form-group row" *ngFor="let item of arrParamsGroup">
                                     <label  class="col-2 col-form-label">{{item.title}} <span *ngIf="item.mandatory" class="text-danger">*</span></label>
                                     <div class="col-lg-6">
-                                        <input *ngIf="listInput.includes(item.type)"
+                                        <input *ngIf="htmlInputType.includes(item.type ? item.type : 'text')"
                                                type="{{item.type}}"
                                                class="form-control form-control-lg"
                                                name="{{item.name ? item.name :  item.title}}"
                                                placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
+                                               autocomplete="off"
                                                [readOnly]="show || item.readonly"
-                                               [class.is-invalid]="isControlInvalid(item.form)"
-                                               [class.is-valid]="isControlValid(item.form)"
                                                formControlName="{{item.form}}"
                                         />
 
-                                        <div class="valid-feedback" *ngIf="isControlValid(item.form)">
-                                            {{item.title}} was entered correct
-                                        </div>
-                                        <div class="invalid-feedback" *ngIf="controlHasError('required', item.form)">
-                                            {{item.title}} is required
-                                        </div>
-                                        <div class="invalid-feedback" *ngIf="controlHasError('minlength', item.form)">
-                                            {{item.title}} minimun length not achieved
-                                        </div>
-                                        <div class="invalid-feedback" *ngIf="controlHasError('maxlength', item.form)">
-                                            {{item.title}} maximun length passed
-                                        </div>
+                                        <textarea *ngIf="item.type === 'textarea'"
+                                                  name="{{item.name ? item.name : item.title}}"
+                                                  formControlName="{{item.form}}"
+                                                  class="form-control form-control-lg"
+                                                  rows="3"
+                                                  [class.is-invalid]="isControlInvalid(item.form)"
+                                                  [class.is-valid]="isControlValid(item.form)"
+                                                  [readOnly]="show"
+                                        >
+                                            {{item.placeHolder ? item.placeHolder : item.title}}
+                                        </textarea>
                                     </div>
                                 </div>
                             </ng-container>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-12">
                             <h3>Models</h3>
@@ -114,49 +110,27 @@
                                 <div class="form-group row" *ngFor="let item of arrFormGroup">
                                     <label  class="col-2 col-form-label">{{item.title}} <span *ngIf="item.mandatory" class="text-danger">*</span></label>
                                     <div class="col-lg-6">
-                                        <input *ngIf="listInput.includes(item.type)"
+                                        <input *ngIf="htmlInputType.includes(item.type ? item.type : 'text')"
                                                type="{{item.type}}"
                                                class="form-control form-control-lg"
                                                name="{{item.name ? item.name :  item.title}}"
                                                placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
                                                autocomplete="off"
                                                [readOnly]="show || item.readonly"
-                                               [class.is-invalid]="isControlInvalid(item.form)"
-                                               [class.is-valid]="isControlValid(item.form)"
                                                formControlName="{{item.form}}"
                                         />
 
                                         <textarea *ngIf="item.type === 'textarea'"
                                                   name="{{item.name ? item.name : item.title}}"
                                                   formControlName="{{item.form}}"
-                                                  placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
                                                   class="form-control form-control-lg"
                                                   rows="3"
                                                   [class.is-invalid]="isControlInvalid(item.form)"
                                                   [class.is-valid]="isControlValid(item.form)"
-                                                  [readOnly]="show || item.readonly"
+                                                  [readOnly]="show"
                                         >
                                             {{item.placeHolder ? item.placeHolder : item.title}}
                                         </textarea>
-
-                                        <app-common-select2
-                                                *ngIf="item.type == 'select'"
-                                                [formGroupParent]="formGroup"
-                                                link="{{item.metaData.url}}"
-                                                selectId="{{item.metaData.key}}"
-                                                selectName="{{item.metaData.value}}"
-                                                [labelName]="item.title"
-                                                formName="{{item.form}}"
-                                        >
-                                        </app-common-select2>
-
-                                        <div class="radio-list" *ngIf="item.type == 'radio'">
-                                            <label class="radio" *ngFor="let t of item.metaData.jsonValues">
-                                                <input type="radio" value="{{t.id}}" formControlName="{{item.form}}"/>
-                                                <span></span>
-                                                {{t.name}}
-                                            </label>
-                                        </div>
 
                                         <div class="valid-feedback" *ngIf="isControlValid(item.form)">
                                             {{item.title}} was entered correct
@@ -175,7 +149,6 @@
                             </ng-container>
                         </div>
                     </div>
-
                     <div class="row" *ngIf="arrDecision.length">
                         <div class="col-12">
                             <h3>Decision</h3>
@@ -183,13 +156,15 @@
                                 <div class="form-group row">
                                     <label  class="col-2 col-form-label">Decision <span *ngIf="true" class="text-danger">*</span></label>
                                     <div class="col-lg-6">
-                                        <div class="radio-list" *ngIf="typeDecision == 'radio'">
-                                            <label class="radio" *ngFor="let t of arrDecision">
-                                                <input type="radio" value="{{t}}" formControlName="decision"/>
-                                                <span></span>
-                                                {{t}}
-                                            </label>
-                                        </div>
+                                        <input
+                                                type="text"
+                                                class="form-control form-control-lg"
+                                                name="decision"
+                                                placeholder="Decision"
+                                                autocomplete="off"
+                                                [readOnly]="show"
+                                                formControlName="decision"
+                                        />
                                     </div>
                                 </div>
                             </ng-container>
