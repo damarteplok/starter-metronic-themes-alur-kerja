@@ -12,9 +12,6 @@ import {environment} from '../../../environments/environment';
     styleUrls: ['./mainan2.component.scss']
 })
 export class Mainan2Component extends BaseCrudBpmnPagesComponent {
-    allSpec = {};
-
-    //INI yang di ganti bpmn component
     diagramUrl = `${environment.apiUrl}/bpmn/mainan`;
 
     constructor(
@@ -23,10 +20,6 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
         private modalService: NgbModal,
     ) {
         super(tableService, fb);
-    }
-
-    create() {
-        this.edit(undefined, 'edit', 'init');
     }
 
     editComponentShow(id, type, typeTask, transFormArrForm, transFormArrVar, transFormArrDecision, typeDecision) {
@@ -71,14 +64,6 @@ export class Mainan2Component extends BaseCrudBpmnPagesComponent {
             filter['id'] = id;
         }
         this.tableService.patchStateBpmn({ filter });
-    }
-
-    ngOnInit(): void {
-        super.ngOnInit();
-    }
-
-    ngOnDestroy() {
-        super.ngOnDestroy();
     }
 
 }
