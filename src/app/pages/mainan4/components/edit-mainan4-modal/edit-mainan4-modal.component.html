@@ -157,6 +157,22 @@
                                             </label>
                                         </div>
 
+                                        <div class="checkbox-list" *ngIf="item.type == 'checkbox'">
+                                            <label class="checkbox" *ngFor="let t of item.metaData.jsonValues">
+                                                <input type="checkbox" value="{{t.id}}" (change)="onCheckChange($event, item.form)"/>
+                                                <span></span>
+                                                {{t.name}}
+                                            </label>
+                                        </div>
+
+                                        <app-date-select
+                                                *ngIf="item.type == 'date'"
+                                                [formGroupParent]="formGroup"
+                                                [labelName]="item.title"
+                                                formName="{{item.form}}"
+                                        >
+                                        </app-date-select>
+
                                         <div class="valid-feedback" *ngIf="isControlValid(item.form)">
                                             {{item.title}} was entered correct
                                         </div>

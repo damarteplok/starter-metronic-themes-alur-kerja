@@ -29,7 +29,7 @@
         "@ngx-translate/core": "^13.0.0",
         "@tinymce/tinymce-angular": "^4.2.4",
         "@types/jquery": "^3.5.6",
-        "angular-alur-kerja-lib": "0.0.85",
+        "angular-alur-kerja-lib": "0.0.97",
         "angular-in-memory-web-api": "^0.11.0",
         "apexcharts": "^3.20.0",
         "bootstrap": "^4.6.0",
