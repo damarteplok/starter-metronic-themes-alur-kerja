@@ -1634,10 +1634,10 @@
   "resolved" "https://registry.npmjs.org/alphanum-sort/-/alphanum-sort-1.0.2.tgz"
   "version" "1.0.2"
 
-"angular-alur-kerja-lib@0.0.84":
-  "integrity" "sha512-T6MUKVCSCo49VWFWN6gxX6iC6ORHQ53A3PhEiuMIUDQrKsoLW9O79ouS03+ygQUZGqda9Sd7FO/w3TiFmkhTlA=="
-  "resolved" "https://registry.npmjs.org/angular-alur-kerja-lib/-/angular-alur-kerja-lib-0.0.84.tgz"
-  "version" "0.0.84"
+"angular-alur-kerja-lib@0.0.98":
+  "integrity" "sha512-OLj9fo678yLmfiCHCAbrdIh/fZ4Wi0KHP+PK2bmvZIfR8bEg92JJTFXaUH01RCLIATWjNZYrD3up4e5lOeRBBQ=="
+  "resolved" "https://registry.npmjs.org/angular-alur-kerja-lib/-/angular-alur-kerja-lib-0.0.98.tgz"
+  "version" "0.0.98"
   dependencies:
     "bpmn-js" "^8.7.2"
     "tslib" "^2.0.0"
@@ -2999,10 +2999,10 @@
     "shebang-command" "^1.2.0"
     "which" "^1.2.9"
 
-"crud-component-alur-kerja@0.0.16":
-  "integrity" "sha512-Lqho68lI1BKfo2rAH39Lip3lUqNXppUgwgbgBvovCKFpduy1XAZ+MqzUNvphubIrhdPxCUiLXcG/pjTaAFSS8g=="
-  "resolved" "https://registry.npmjs.org/crud-component-alur-kerja/-/crud-component-alur-kerja-0.0.16.tgz"
-  "version" "0.0.16"
+"crud-component-alur-kerja@0.0.17":
+  "integrity" "sha512-NuYmbVrAbSFEBoFUd1sVT3qzt96jid4Dj35l4QixeKPhIjAvd0NwRXX4RScd0BBhXkdn1VG3QP1SDrSJzwVO1w=="
+  "resolved" "https://registry.npmjs.org/crud-component-alur-kerja/-/crud-component-alur-kerja-0.0.17.tgz"
+  "version" "0.0.17"
   dependencies:
     "@angular-devkit/core" "^12.2.2"
     "@angular-devkit/schematics" "^12.2.2"
@@ -3475,9 +3475,9 @@
     "min-dom" "^3.1.3"
 
 "diagram-js@^0.x || ^1.x || ^2.x || ^3.x || ^4.x || ^5.x || ^6.x || ^7.x", "diagram-js@^7.3.0":
-  "integrity" "sha512-Z4upYM5JbJc29LPp6r+g6x3/CIDDw7bRtYl/HItdippix/atrIx8PZKCtJTGB2NTYGzTWb3GAj7E/oLD0i5C4Q=="
-  "resolved" "https://registry.npmjs.org/diagram-js/-/diagram-js-7.3.1.tgz"
-  "version" "7.3.1"
+  "integrity" "sha512-leQXXWg5r1IuH+jYrE8c1VIab2L20RJMIKxIw/frsvTiqWxSuE5VrXDz+nRAgbYnrtUqzyGCtGxR0pElhUXnLw=="
+  "resolved" "https://registry.npmjs.org/diagram-js/-/diagram-js-7.4.0.tgz"
+  "version" "7.4.0"
   dependencies:
     "css.escape" "^1.5.1"
     "didi" "^5.2.1"
