@@ -29,6 +29,11 @@ const routes: Routes = [
             import('./mainan4/mainan4.module').then((m) => m.Mainan4Module),
       },
       {
+        path: 'leave',
+        loadChildren: () =>
+            import('./leave/leave.module').then((m) => m.LeaveModule),
+      },
+      {
         path: 'testdoang',
         loadChildren: () =>
             import('./mainan5/mainan5.module').then((m) => m.Mainan5Module),

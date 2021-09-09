@@ -1,0 +1,243 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="modal-title h4" id="example-modal-sizes-title-lg">
+            <ng-container *ngIf="formObj?.model">
+                {{title}}
+            </ng-container>
+        </div>
+    </div>
+    <div class="overlay overlay-block cursor-default modal-body" style="min-height: 404px">
+        <ng-container *ngIf="isLoading$ | async">
+            <div class="overlay-layer bg-transparent">
+                <div class="spinner spinner-lg spinner-success"></div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="formObj?.model">
+            <div class="row" *ngIf="!applyHide">
+                <div class="col-12">
+                    <button type="button"
+                            class="btn btn-primary mb-3"
+                            (click)="isCollapsed = !isCollapsed"
+                            [attr.aria-expanded]="!isCollapsed"
+                            aria-controls="collapseExample">
+                        Show
+                    </button>
+                    <div [ngbCollapse]="isCollapsed">
+                        <div class="diagram-parent mb-5" style="height: 450px">
+                            <app-diagram [url]="diagramUrl" [taskUrl]="type" (importDone)="handleImported($event)"></app-diagram>
+
+                            <div class="import-error" *ngIf="importError">
+                                <strong>Failed to render diagram: </strong>
+                                {{ importError.message }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <mat-tab-group>
+                <mat-tab label="Spec">
+                    <ng-container>
+                        <form action="#" class="form form-label-right" [formGroup]="formGroup">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>Variables</h3>
+                                    <ng-container>
+                                        <div class="form-group row" *ngFor="let item of arrParamsGroup">
+                                            <label  class="col-2 col-form-label">{{item.title}} <span *ngIf="item.mandatory" class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <input *ngIf="listInput.includes(item.type)"
+                                                       type="{{item.type}}"
+                                                       class="form-control form-control-lg"
+                                                       name="{{item.name ? item.name :  item.title}}"
+                                                       placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
+                                                       [readOnly]="show || item.readonly"
+                                                       [class.is-invalid]="isControlInvalid(item.form)"
+                                                       [class.is-valid]="isControlValid(item.form)"
+                                                       formControlName="{{item.form}}"
+                                                />
+
+                                                <div class="valid-feedback" *ngIf="isControlValid(item.form)">
+                                                    {{item.title}} was entered correct
+                                                </div>
+                                                <div class="invalid-feedback" *ngIf="controlHasError('required', item.form)">
+                                                    {{item.title}} is required
+                                                </div>
+                                                <div class="invalid-feedback" *ngIf="controlHasError('minlength', item.form)">
+                                                    {{item.title}} minimun length not achieved
+                                                </div>
+                                                <div class="invalid-feedback" *ngIf="controlHasError('maxlength', item.form)">
+                                                    {{item.title}} maximun length passed
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>Models</h3>
+                                    <ng-container>
+                                        <div class="form-group row" *ngFor="let item of arrFormGroup">
+                                            <label  class="col-2 col-form-label">{{item.title}} <span *ngIf="item.mandatory" class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <input *ngIf="listInput.includes(item.type)"
+                                                       type="{{item.type}}"
+                                                       class="form-control form-control-lg"
+                                                       name="{{item.name ? item.name :  item.title}}"
+                                                       placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
+                                                       autocomplete="off"
+                                                       [readOnly]="show || item.readonly"
+                                                       [class.is-invalid]="isControlInvalid(item.form)"
+                                                       [class.is-valid]="isControlValid(item.form)"
+                                                       formControlName="{{item.form}}"
+                                                />
+
+                                                <textarea *ngIf="item.type === 'textarea'"
+                                                          name="{{item.name ? item.name : item.title}}"
+                                                          formControlName="{{item.form}}"
+                                                          placeholder="{{item.placeHolder ? item.placeHolder : item.title}}"
+                                                          class="form-control form-control-lg"
+                                                          rows="3"
+                                                          [class.is-invalid]="isControlInvalid(item.form)"
+                                                          [class.is-valid]="isControlValid(item.form)"
+                                                          [readOnly]="show || item.readonly"
+                                                >
+                                            {{item.placeHolder ? item.placeHolder : item.title}}
+                                        </textarea>
+
+                                                <app-common-select2
+                                                        *ngIf="item.type == 'select'"
+                                                        [formGroupParent]="formGroup"
+                                                        link="{{item.metaData.url}}"
+                                                        selectId="{{item.metaData.key}}"
+                                                        selectName="{{item.metaData.value}}"
+                                                        [labelName]="item.title"
+                                                        formName="{{item.form}}"
+                                                >
+                                                </app-common-select2>
+
+                                                <div class="radio-list" *ngIf="item.type == 'radio'">
+                                                    <label class="radio" *ngFor="let t of item.metaData.jsonValues">
+                                                        <input type="radio" value="{{t.id}}" formControlName="{{item.form}}"/>
+                                                        <span></span>
+                                                        {{t.name}}
+                                                    </label>
+                                                </div>
+
+                                                <div class="checkbox-list" *ngIf="item.type == 'checkbox'">
+                                                    <label class="checkbox" *ngFor="let t of item.metaData.jsonValues">
+                                                        <input type="checkbox" value="{{t.id}}" (change)="onCheckChange($event, item.form)"/>
+                                                        <span></span>
+                                                        {{t.name}}
+                                                    </label>
+                                                </div>
+
+                                                <app-date-select
+                                                        *ngIf="item.type == 'date'"
+                                                        [formGroupParent]="formGroup"
+                                                        [labelName]="item.title"
+                                                        formName="{{item.form}}"
+                                                >
+                                                </app-date-select>
+
+                                                <div class="valid-feedback" *ngIf="isControlValid(item.form)">
+                                                    {{item.title}} was entered correct
+                                                </div>
+                                                <div class="invalid-feedback" *ngIf="controlHasError('required', item.form)">
+                                                    {{item.title}} is required
+                                                </div>
+                                                <div class="invalid-feedback" *ngIf="controlHasError('minlength', item.form)">
+                                                    {{item.title}} minimun length not achieved
+                                                </div>
+                                                <div class="invalid-feedback" *ngIf="controlHasError('maxlength', item.form)">
+                                                    {{item.title}} maximun length passed
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="arrDecision.length">
+                                <div class="col-12">
+                                    <h3>Decision</h3>
+                                    <ng-container>
+                                        <div class="form-group row">
+                                            <label  class="col-2 col-form-label">Decision <span *ngIf="true" class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <div class="radio-list" *ngIf="typeDecision == 'radio'">
+                                                    <label class="radio" *ngFor="let t of arrDecision">
+                                                        <input type="radio" value="{{t}}" formControlName="decision"/>
+                                                        <span></span>
+                                                        {{t}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </form>
+                    </ng-container>
+                </mat-tab>
+                <mat-tab label="Logs">
+                    <div class="row" *ngIf="!applyHide">
+                        <div class="col-12">
+                            <h3>Logs</h3>
+                            <table class="table table-head-custom table-vertical-center overflow-hidden">
+                                <thead>
+                                <th>id</th>
+                                <th>createdDate</th>
+                                <th>updatedDate</th>
+                                <th>entityId</th>
+                                <th>actBy</th>
+                                <th>remarks</th>
+                                <th>statusBefore</th>
+                                <th>statusAfter</th>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of formObj?.logs">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.createdDate | date: 'dd-MMM-yyyy' }}</td>
+                                    <td>{{ item.updatedDate | date: 'dd-MMM-yyyy' }}</td>
+                                    <td>{{ item.entityId }}</td>
+                                    <td>{{ item.actBy }}</td>
+                                    <td>{{ item.remarks }}</td>
+                                    <td>{{ item.statusBefore }}</td>
+                                    <td>{{ item.statusAfter }}</td>
+                                </tr>
+                                <tr *ngIf="formObj?.logs.length === 0">
+                                    <td colspan="8">Not found Data</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
+        </ng-container>
+    </div>
+    <div class="modal-footer" *ngIf="!show">
+        <button
+                type="button"
+                class="btn btn-light btn-elevate mr-2"
+                (click)="modal.dismiss()"
+        >
+            Cancel
+        </button>
+        <ng-container *ngIf="formObj?.model">
+            <button
+                    type="submit"
+                    class="btn btn-primary btn-elevate"
+                    (click)="save()"
+                    [disabled]="formGroup.invalid"
+            >
+                {{id ? 'Approve' : 'Apply'}}
+            </button>
+        </ng-container>
+    </div>
+</div>
