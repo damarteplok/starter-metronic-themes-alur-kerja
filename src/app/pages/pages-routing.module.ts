@@ -26,7 +26,7 @@ const routes: Routes = [
       {
         path: 'mainan',
         loadChildren: () =>
-            import('./mainan2/mainan2.module').then((m) => m.Mainan2Module),
+            import('./mainan4/mainan4.module').then((m) => m.Mainan4Module),
       },
       {
         path: 'dashboard',
