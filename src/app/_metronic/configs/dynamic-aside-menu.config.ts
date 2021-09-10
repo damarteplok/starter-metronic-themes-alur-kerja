@@ -10,41 +10,6 @@ export const DynamicAsideMenuConfig = {
       bullet: 'dot',
     },
     {
-      title: 'Category',
-      root: true,
-      icon: 'flaticon2-expand',
-      page: '/category',
-      svg: './assets/media/svg/icons/Home/Library.svg'
-    },
-    {
-      title: 'Articles',
-      root: true,
-      icon: 'flaticon2-expand',
-      page: '/articles',
-      svg: './assets/media/svg/icons/Home/Library.svg'
-    },
-    {
-      title: 'JatahCuti',
-      root: true,
-      icon: 'flaticon2-expand',
-      page: '/jatahcuti',
-      svg: './assets/media/svg/icons/Home/Library.svg'
-    },
-    {
-      title: 'Mainan',
-      root: true,
-      icon: 'flaticon2-expand',
-      page: '/mainan',
-      svg: './assets/media/svg/icons/Home/Library.svg'
-    },
-    {
-      title: 'Leave',
-      root: true,
-      icon: 'flaticon2-expand',
-      page: '/leave',
-      svg: './assets/media/svg/icons/Home/Library.svg'
-    },
-    {
       title: 'Layout Builder',
       root: true,
       icon: 'flaticon2-expand',
